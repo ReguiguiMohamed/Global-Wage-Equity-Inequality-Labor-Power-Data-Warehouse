@@ -20,13 +20,13 @@ def build_dim_country():
         return pd.DataFrame()
 
     # Select latest country info and rename columns
-    cols = ["country","c3","region_wb","population","year"]
+    cols = ["country","c3","population","year"]
     for c in cols:
         if c not in wiid.columns: wiid[c] = pd.NA
         
     latest = wiid.sort_values(["country","year"], ascending=[True, False]).groupby(["country","c3"], as_index=False).first()
-    dim = latest[["country","c3","region_wb","population"]].copy()
-    dim.rename(columns={"country":"country_name","c3":"iso3", "region_wb": "world_bank_region", "population":"population_latest"}, inplace=True)
+    dim = latest[["country","c3","population"]].copy()
+    dim.rename(columns={"country":"country_name","c3":"iso3", "population":"population_latest"}, inplace=True)
     
     # Apply exclusions and cleaning
     dim = dim[~dim["iso3"].isin(EXCLUDE_ISO3)]

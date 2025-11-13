@@ -34,30 +34,23 @@ def build_and_write_facts(
             return pd.DataFrame()
         return reduce(lambda left, right: pd.merge(left, right, on=on, how='outer'), valid_dfs)
 
-    # --- Fact_IncomeDistribution ---
-    fact_income_distribution = merge_data([wiid, owid_top10], on=["iso3", "country_name", "year"])
-    if not fact_income_distribution.empty:
-        profiles.append(write_fact(OUT["FACT_INCOME_DISTRIBUTION"], fact_income_distribution, "Fact_IncomeDistribution"))
+    # --- Fact_Economy ---
+    fact_economy = merge_data(list(ilos.values()), on=["iso3", "country_name", "year", "sex", "age_group"])
+    if not fact_economy.empty:
+        profiles.append(write_fact(OUT["FACT_ECONOMY"], fact_economy, "Fact_Economy"))
 
-    # --- Fact_LabourForce & Fact_Earnings ---
-    labour_force_dfs = [df for name, df in ilos.items() if name != 'EAR_4MTH_SEX_CUR_NB_A']
-    earnings_df = ilos.get('EAR_4MTH_SEX_CUR_NB_A')
-
-    fact_labour_force = merge_data(labour_force_dfs, on=["iso3", "country_name", "year", "sex", "age_group"])
-    if not fact_labour_force.empty:
-        profiles.append(write_fact(OUT["FACT_LABOUR_FORCE"], fact_labour_force, "Fact_LabourForce"))
-
-    if earnings_df is not None and not earnings_df.empty:
-        profiles.append(write_fact(OUT["FACT_EARNINGS"], earnings_df, "Fact_Earnings"))
+    # --- Fact_Inequality ---
+    fact_inequality = merge_data([wiid, owid_top10, wb_pov], on=["iso3", "country_name", "year"])
+    if not fact_inequality.empty:
+        profiles.append(write_fact(OUT["FACT_INEQUALITY"], fact_inequality, "Fact_Inequality"))
 
     # --- Fact_SocialDevelopment ---
     fact_social_development = merge_data([undp, wb_lit], on=["iso3", "country_name", "year"])
     if not fact_social_development.empty:
         profiles.append(write_fact(OUT["FACT_SOCIAL_DEVELOPMENT"], fact_social_development, "Fact_SocialDevelopment"))
 
-    # --- Fact_EconomicState ---
-    fact_economic_state = merge_data([wb_pov, owid_gov], on=["iso3", "country_name", "year"])
-    if not fact_economic_state.empty:
-        profiles.append(write_fact(OUT["FACT_ECONOMIC_STATE"], fact_economic_state, "Fact_EconomicState"))
+    # --- Fact_Policy ---
+    if not owid_gov.empty:
+        profiles.append(write_fact(OUT["FACT_POLICY"], owid_gov, "Fact_Policy"))
 
     return "\n\n".join(profiles)

@@ -9,6 +9,8 @@ from build_country_dimension import build_dim_country
 from build_dimensions import build_dim_sex_age
 from build_facts import build_and_write_facts
 from utils import profile_block
+import time
+import shutil
 from pathlib import Path
 
 # Mapping for ILO files to their new measure names
@@ -25,11 +27,18 @@ def main():
     """Orchestrates the entire ETL process."""
     print("--- Starting GWEILPDW ETL Refactor ---")
 
+    # === Cleanup ===
+    if OUT_DIR.exists():
+        print(f"--- Deleting existing output directory: {OUT_DIR} ---")
+        time.sleep(2) # Allow time for file locks to be released
+        shutil.rmtree(OUT_DIR)
+    OUT_DIR.mkdir(exist_ok=True)
+
     # === Dimensions ===
     print("\n--- Building Dimensions ---")
     dim_country = build_dim_country()
     # We need to load all ilo files to build sex and age dimensions
-    ilos_for_dims = [load_ilostat_quick(FILES["ILO"][file_key], measure) for file_key, measure in ILO_MEASURE_MAP.items()]
+    ilos_for_dims = [load_ilostat_quick(FILES["ILO"][file_key], measure, dim_country) for file_key, measure in ILO_MEASURE_MAP.items()]
     dim_sex, dim_age = build_dim_sex_age(ilos_for_dims)
     
     # === Extract & Transform ===
@@ -40,12 +49,12 @@ def main():
     ilos = {}
     for file_key, fname in FILES["ILO"].items():
         measure_name = ILO_MEASURE_MAP[file_key]
-        ilos[file_key] = load_ilostat_quick(fname, measure_name)
+        ilos[file_key] = load_ilostat_quick(fname, measure_name, dim_country)
         print(f"✓ Loaded ILOSTAT '{fname}' ({measure_name}) with {len(ilos[file_key])} records.")
 
-    wb_lit = load_worldbank_wide(FILES["WB_LITERACY"], "literacy_rate")
+    wb_lit = load_worldbank_wide(FILES["WB_LITERACY"], "literacy_rate", dim_country)
     print(f"✓ Loaded World Bank Literacy data with {len(wb_lit)} records.")
-    wb_pov = load_worldbank_wide(FILES["WB_POVERTY"], "poverty_headcount_ratio")
+    wb_pov = load_worldbank_wide(FILES["WB_POVERTY"], "gini", dim_country, indicator_name="Gini index")
     print(f"✓ Loaded World Bank Poverty data with {len(wb_pov)} records.")
 
     undp = load_hdi_csv()

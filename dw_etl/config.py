@@ -44,11 +44,10 @@ OUT = {
     "DIM_AGE":     OUT_DIR / "Dim_Age.csv",
 
     # Facts
-    "FACT_INCOME_DISTRIBUTION": OUT_DIR / "Fact_IncomeDistribution.csv",
-    "FACT_LABOUR_FORCE":        OUT_DIR / "Fact_LabourForce.csv",
-    "FACT_EARNINGS":            OUT_DIR / "Fact_Earnings.csv",
+    "FACT_ECONOMY":             OUT_DIR / "Fact_Economy.csv",
+    "FACT_INEQUALITY":          OUT_DIR / "Fact_Inequality.csv",
     "FACT_SOCIAL_DEVELOPMENT":  OUT_DIR / "Fact_SocialDevelopment.csv",
-    "FACT_ECONOMIC_STATE":      OUT_DIR / "Fact_EconomicState.csv",
+    "FACT_POLICY":              OUT_DIR / "Fact_Policy.csv",
 
     # Other
     "PROFILE": OUT_DIR / "profiling_report.md",
