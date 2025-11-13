@@ -2,6 +2,31 @@ import pandas as pd
 from config import DATA_DIR, FILES
 from utils import exclude_israel
 
+def load_pip_top1() -> pd.DataFrame:
+    """
+    Loads the OWID/PIP Top 1% income share data.
+
+    Returns:
+        A DataFrame with iso3, country_name, year, and top_1_percent_share.
+    """
+    csv_name = "income-share-top-1-before-tax-wid.csv"
+    df = pd.read_csv(DATA_DIR / csv_name)
+    
+    # Rename columns
+    df.rename(columns={"Code":"iso3","Entity":"country_name", "Year": "year", "Top 1% - Share (Pretax) (Estimated)": "top_1_percent_share"}, inplace=True)
+    
+    # Type conversions
+    df["year"] = pd.to_numeric(df["year"], errors="coerce").astype("Int64")
+    df["top_1_percent_share"] = pd.to_numeric(df["top_1_percent_share"], errors="coerce")
+    
+    # Exclude countries and drop rows with no value
+    df = exclude_israel(df, "iso3")
+    df.dropna(subset=["year", "top_1_percent_share"], inplace=True)
+
+    # Select and reorder columns
+    final_cols = ["iso3", "country_name", "year", "top_1_percent_share"]
+    return df[final_cols]
+
 def load_pip_top10() -> pd.DataFrame:
     """
     Loads the OWID/PIP Top 10% income share data.

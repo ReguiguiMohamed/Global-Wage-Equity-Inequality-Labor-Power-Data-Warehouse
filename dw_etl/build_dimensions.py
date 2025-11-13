@@ -2,11 +2,11 @@ from config import OUT
 import pandas as pd
 
 def build_dim_sex_age(ilostat_frames: list[pd.DataFrame]):
-    # from ILO: collect distinct sex & classif1
+    # from ILO: collect distinct sex & age_group
     sex_vals, age_vals = set(), set()
     for df in ilostat_frames:
         if "sex" in df.columns: sex_vals |= set(df["sex"].dropna().unique())
-        if "classif1" in df.columns: age_vals |= set([v for v in df["classif1"].dropna().unique() if v and v.lower()!="total"])
+        if "age_group" in df.columns: age_vals |= set([v for v in df["age_group"].dropna().unique() if v and v.lower()!="total"])
     
     # Add a placeholder for 'Not Applicable' or 'Total' if the sets are not empty
     if sex_vals:

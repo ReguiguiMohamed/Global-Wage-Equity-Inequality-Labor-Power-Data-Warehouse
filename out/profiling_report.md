@@ -55,14 +55,20 @@
 ### UNDP_HDI
 - rows: 207
 - years: 2023–2023 (distinct=1)
-- countries: 0
-- top null ratios: iso3=100.0%, country_name=0.0%, year=0.0%, hdi=0.0%
+- countries: 175
+- top null ratios: iso3=15.5%, country_name=0.0%, year=0.0%, hdi=0.0%
 
 ### OWID_Top10
 - rows: 2,336
 - years: 1963–2024 (distinct=62)
 - countries: 170
 - top null ratios: iso3=4.7%, country_name=0.0%, year=0.0%, top_10_percent_share=0.0%
+
+### OWID_Top1
+- rows: 6,245
+- years: 1820–2023 (distinct=119)
+- countries: 217
+- top null ratios: iso3=20.1%, country_name=0.0%, year=0.0%, top_1_percent_share=0.0%
 
 ### OWID_GovSpend
 - rows: 9,174
@@ -74,24 +80,20 @@
 # Fact Table Profiles
 ### Fact_Economy
 - rows: 13,832,654
-- years: 1946–2024 (distinct=79)
 - countries: 181
 - top null ratios: informal_employment_rate=99.9%, youth_neet_rate=99.9%, avg_monthly_earnings=99.8%, iso3=16.8%, employment_to_population_ratio=1.8%, unemployment_rate=0.9%
 
 ### Fact_Inequality
-- rows: 3,761
-- years: 1890–2024 (distinct=86)
-- countries: 201
-- top null ratios: top_10_percent_share=37.9%, gini_wb=36.8%, gini=33.2%, palma=33.2%, s80s20=33.2%, gini_std=26.6%
+- rows: 7,947
+- countries: 223
+- top null ratios: top_10_percent_share=70.6%, gini_wb=70.1%, gini=68.4%, palma=68.4%, s80s20=68.4%, gini_std=65.3%
 
 ### Fact_SocialDevelopment
-- rows: 1,306
-- years: 1970–2024 (distinct=51)
-- countries: 166
-- top null ratios: hdi=84.2%, iso3=15.8%, literacy_rate=15.8%, country_name=0.0%, year=0.0%
+- rows: 3,582
+- countries: 199
+- top null ratios: hdi=94.2%, literacy_rate=69.3%, health_expenditure_per_capita=30.3%, inequality_education=26.0%, inequality_life_expectancy=23.8%, iso3=8.2%
 
 ### Fact_Policy
-- rows: 9,174
-- years: 1800–2023 (distinct=224)
-- countries: 150
-- top null ratios: iso3=0.0%, country_name=0.0%, year=0.0%, gov_spending_gdp_percent=0.0%
+- rows: 10,288
+- countries: 186
+- top null ratios: minimum_wage=64.7%, pit_rate=24.0%, gov_spending_gdp_percent=10.8%, iso3=4.7%, time_key=0.3%, country_name=0.0%
