@@ -9,7 +9,7 @@ def load_pip_top1() -> pd.DataFrame:
     Returns:
         A DataFrame with iso3, country_name, year, and top_1_percent_share.
     """
-    csv_name = "income-share-top-1-before-tax-wid.csv"
+    csv_name = FILES["OWID_PIP_TOP1"]
     df = pd.read_csv(DATA_DIR / csv_name)
     
     # Rename columns

@@ -1,19 +1,231 @@
 import pandas as pd
-from functools import reduce
 from config import OUT
 from utils import profile_block
 
-def write_fact(path, df, name):
-    """Writes a fact table to CSV and returns a profile block."""
+
+def create_economy_fact_table(
+    name: str,
+    data_sources: list,
+    dim_geography: pd.DataFrame,
+    dim_time: pd.DataFrame,
+    dim_sex: pd.DataFrame,
+    dim_age: pd.DataFrame,
+    dim_indicator: pd.DataFrame,
+    dim_economic_classification: pd.DataFrame,
+) -> pd.DataFrame | None:
+    """
+    Build the economy fact table from ILOSTAT sources.
+
+    Keys:
+      - geography_key, time_key, sex_key, age_key, economic_classification_key, indicator_key
+    Measures:
+      - value (one row per indicator / country / year / sex / age band)
+    """
+    if not data_sources:
+        return None
+
+    processed_dfs = []
+    for df in data_sources:
+        key_cols = ["iso3", "country_name", "year", "sex", "age_group"]
+        measure_cols = [c for c in df.columns if c not in key_cols]
+        if not measure_cols:
+            continue
+        measure_col = measure_cols[0]
+
+        renamed_df = df.rename(columns={measure_col: "value"})
+        renamed_df["indicator_code"] = measure_col
+        processed_dfs.append(renamed_df)
+
+    if not processed_dfs:
+        return None
+
+    long_df = pd.concat(processed_dfs, ignore_index=True)
+    long_df.dropna(subset=["value"], inplace=True)
+
+    # Geography and economic classification (by income group)
+    geo_cols = ["iso3", "geography_key", "income_group"]
+    long_df = pd.merge(
+        long_df,
+        dim_geography[geo_cols],
+        on="iso3",
+        how="left",
+    )
+    long_df = pd.merge(
+        long_df,
+        dim_economic_classification[
+            ["income_group", "economic_classification_key"]
+        ],
+        on="income_group",
+        how="left",
+    )
+
+    # Time
+    long_df = pd.merge(
+        long_df,
+        dim_time[["year", "time_key"]],
+        on="year",
+        how="left",
+    )
+
+    # Indicator
+    long_df = pd.merge(
+        long_df,
+        dim_indicator[["indicator_code", "indicator_key"]],
+        on="indicator_code",
+        how="left",
+    )
+
+    # Sex and age dimensions
+    dim_sex_simplified = dim_sex[["sex_label", "sex_key"]]
+    long_df = pd.merge(
+        long_df,
+        dim_sex_simplified,
+        left_on="sex",
+        right_on="sex_label",
+        how="left",
+    )
+
+    dim_age_simplified = dim_age[["age_group", "age_key"]]
+    long_df = pd.merge(
+        long_df,
+        dim_age_simplified,
+        on="age_group",
+        how="left",
+    )
+
+    fact_table = long_df[
+        [
+            "geography_key",
+            "time_key",
+            "sex_key",
+            "age_key",
+            "economic_classification_key",
+            "indicator_key",
+            "value",
+        ]
+    ]
+
+    write_fact(OUT[name], fact_table, name)
+    return fact_table
+
+
+def create_fact_table(
+    name: str,
+    data_sources: list,
+    dim_geography: pd.DataFrame,
+    dim_time: pd.DataFrame,
+    dim_indicator: pd.DataFrame,
+    dim_source: pd.DataFrame,
+    dim_economic_classification: pd.DataFrame,
+) -> pd.DataFrame | None:
+    """
+    Build a generic fact table from wide country/year data sources.
+
+    Used for:
+      - Inequality fact
+      - Social development fact
+
+    Keys:
+      - geography_key, time_key, economic_classification_key, source_key, unit_key, indicator_key
+    Measures:
+      - value (one row per indicator / country / year)
+    """
+    if not data_sources:
+        return None
+
+    all_long_dfs = []
+    for df in data_sources:
+        if df is None or df.empty:
+            continue
+
+        id_vars = [c for c in ["iso3", "year", "country_name"] if c in df.columns]
+        if not id_vars:
+            continue
+
+        melted_df = df.melt(
+            id_vars=id_vars,
+            var_name="indicator_code",
+            value_name="value",
+        )
+        all_long_dfs.append(melted_df)
+
+    if not all_long_dfs:
+        return None
+
+    long_df = pd.concat(all_long_dfs, ignore_index=True)
+    long_df.dropna(subset=["value"], inplace=True)
+
+    # Geography (incl. income group) and economic classification
+    geo_cols = ["iso3", "geography_key", "income_group"]
+    long_df = pd.merge(
+        long_df,
+        dim_geography[geo_cols],
+        on="iso3",
+        how="left",
+    )
+    long_df = pd.merge(
+        long_df,
+        dim_economic_classification[
+            ["income_group", "economic_classification_key"]
+        ],
+        on="income_group",
+        how="left",
+    )
+
+    # Time
+    long_df = pd.merge(
+        long_df,
+        dim_time[["year", "time_key"]],
+        on="year",
+        how="left",
+    )
+
+    # Indicator, source
+    long_df = pd.merge(
+        long_df,
+        dim_indicator[["indicator_code", "indicator_key", "unit", "source"]],
+        on="indicator_code",
+        how="left",
+    )
+    long_df = pd.merge(
+        long_df,
+        dim_source[["source_code", "source_key"]],
+        left_on="source",
+        right_on="source_code",
+        how="left",
+    )
+
+    # For these facts, sex/age are not meaningful – keep schema lean
+    fact_table = long_df[
+        [
+            "geography_key",
+            "time_key",
+            "economic_classification_key",
+            "source_key",
+            "indicator_key",
+            "value",
+        ]
+    ]
+
+    write_fact(OUT[name], fact_table, name)
+    return fact_table
+
+
+def write_fact(path, df, name: str) -> str:
+    """Write a fact table to CSV and return its profile block."""
     df.to_csv(path, index=False)
-    print(f"✓ Fact '{name}' built with {len(df)} records.")
+    print(f"Fact '{name}' built with {len(df)} records.")
     return profile_block(df, name)
 
+
 def build_and_write_facts(
-    dim_country: pd.DataFrame,
+    dim_geography: pd.DataFrame,
     dim_sex: pd.DataFrame,
     dim_age: pd.DataFrame,
     dim_time: pd.DataFrame,
+    dim_indicator: pd.DataFrame,
+    dim_source: pd.DataFrame,
+    dim_economic_classification: pd.DataFrame,
     wiid: pd.DataFrame,
     ilos: dict,
     min_wage: pd.DataFrame,
@@ -24,69 +236,67 @@ def build_and_write_facts(
     owid_top1: pd.DataFrame,
     owid_life_expectancy: pd.DataFrame,
     owid_education_inequality: pd.DataFrame,
+    owid_caloric_cv: pd.DataFrame,
     owid_gov: pd.DataFrame,
-    pit_rates: pd.DataFrame
-):
+) -> str:
     """
-    Builds and writes all fact tables.
+    Build and persist all fact tables, returning a combined profiling string.
     """
-    profiles = []
-    
-    # Helper for merging dataframes
-    def merge_data(dfs: list, on: list):
-        # Filter out None or empty dataframes
-        valid_dfs = [df for df in dfs if df is not None and not df.empty]
-        if not valid_dfs:
-            return pd.DataFrame()
-        return reduce(lambda left, right: pd.merge(left, right, on=on, how='outer'), valid_dfs)
-
-    def merge_with_time(df: pd.DataFrame, dim_time: pd.DataFrame) -> pd.DataFrame:
-        """Merges a dataframe with the time dimension."""
-        if 'year' not in df.columns:
-            return df
-        df['year'] = pd.to_numeric(df['year'], errors='coerce')
-        df = df.dropna(subset=['year'])
-        df['year'] = df['year'].astype(int)
-        
-        # Merge and replace year with time_key
-        merged_df = pd.merge(df, dim_time[['year', 'time_key']], on='year', how='left')
-        return merged_df.drop(columns=['year'])
+    profiles: list[str] = []
 
     # --- Fact_Economy ---
-    fact_economy = merge_data(list(ilos.values()), on=["iso3", "country_name", "year", "sex", "age_group"])
-    if not fact_economy.empty:
-        fact_economy = merge_with_time(fact_economy, dim_time)
-        profiles.append(write_fact(OUT["FACT_ECONOMY"], fact_economy, "Fact_Economy"))
+    fact_economy_sources = list(ilos.values())
+    fact_economy = create_economy_fact_table(
+        "FACT_ECONOMY",
+        fact_economy_sources,
+        dim_geography,
+        dim_time,
+        dim_sex,
+        dim_age,
+        dim_indicator,
+        dim_economic_classification,
+    )
+    if fact_economy is not None:
+        profiles.append(profile_block(fact_economy, "Fact_Economy"))
 
     # --- Fact_Inequality ---
-    fact_inequality = merge_data([wiid, owid_top10, owid_top1, wb_pov], on=["iso3", "country_name", "year"])
-    if not fact_inequality.empty:
-        fact_inequality = merge_with_time(fact_inequality, dim_time)
-        profiles.append(write_fact(OUT["FACT_INEQUALITY"], fact_inequality, "Fact_Inequality"))
+    fact_inequality_sources = [wiid, owid_top10, owid_top1, wb_pov]
+    fact_inequality = create_fact_table(
+        "FACT_INEQUALITY",
+        fact_inequality_sources,
+        dim_geography,
+        dim_time,
+        dim_indicator,
+        dim_source,
+        dim_economic_classification,
+    )
+    if fact_inequality is not None:
+        profiles.append(profile_block(fact_inequality, "Fact_Inequality"))
 
     # --- Fact_SocialDevelopment ---
-    fact_social_development = merge_data([undp, wb_lit, owid_life_expectancy, owid_education_inequality], on=["iso3", "country_name", "year"])
-    if not fact_social_development.empty:
-        fact_social_development = merge_with_time(fact_social_development, dim_time)
-        profiles.append(write_fact(OUT["FACT_SOCIAL_DEVELOPMENT"], fact_social_development, "Fact_SocialDevelopment"))
-
-    # --- Fact_Policy ---
-    # owid_gov and min_wage have 'year', pit_rates does not.
-    # Merge owid_gov and min_wage first, then merge pit_rates
-    fact_policy_time_series = merge_data([owid_gov, min_wage], on=["iso3", "country_name", "year"])
-    if not fact_policy_time_series.empty:
-        fact_policy_time_series = merge_with_time(fact_policy_time_series, dim_time)
-    
-    # Merge pit_rates separately, as it's not time-series
-    if not pit_rates.empty:
-        if fact_policy_time_series.empty:
-            fact_policy = pit_rates
-        else:
-            fact_policy = pd.merge(fact_policy_time_series, pit_rates, on=["iso3", "country_name"], how='outer')
-    else:
-        fact_policy = fact_policy_time_series
-
-    if not fact_policy.empty:
-        profiles.append(write_fact(OUT["FACT_POLICY"], fact_policy, "Fact_Policy"))
+    # Merge former "policy" measures (minimum wage, gov spending) into Social Development
+    fact_social_development_sources = [
+        undp,
+        wb_lit,
+        owid_life_expectancy,
+        owid_education_inequality,
+        owid_caloric_cv,      # ← new
+        min_wage,
+        owid_gov,
+    ]
+    fact_social_development = create_fact_table(
+        "FACT_SOCIAL_DEVELOPMENT",
+        fact_social_development_sources,
+        dim_geography,
+        dim_time,
+        dim_indicator,
+        dim_source,
+        dim_economic_classification,
+    )
+    if fact_social_development is not None:
+        profiles.append(
+            profile_block(fact_social_development, "Fact_SocialDevelopment")
+        )
 
     return "\n\n".join(profiles)
+

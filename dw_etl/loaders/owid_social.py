@@ -1,5 +1,5 @@
 import pandas as pd
-from config import DATA_DIR
+from config import DATA_DIR, FILES
 from utils import exclude_israel
 
 def load_owid_life_expectancy() -> pd.DataFrame:
@@ -9,7 +9,7 @@ def load_owid_life_expectancy() -> pd.DataFrame:
     Returns:
         A DataFrame with iso3, country_name, year, inequality_life_expectancy, and health_expenditure_per_capita.
     """
-    csv_name = "inequality-in-life-expectancy-vs-health-expenditure-per-capita.csv"
+    csv_name = FILES["OWID_LIFE_EXPECTANCY"]
     df = pd.read_csv(DATA_DIR / csv_name)
     
     # Rename columns
@@ -41,9 +41,9 @@ def load_owid_education_inequality() -> pd.DataFrame:
     Returns:
         A DataFrame with iso3, country_name, year, inequality_education.
     """
-    csv_name = "inequality-in-education.csv"
+    csv_name = FILES["OWID_EDUCATION_INEQUALITY"]
     df = pd.read_csv(DATA_DIR / csv_name)
-    
+
     # Rename columns
     df.rename(columns={
         "Code":"iso3",
@@ -51,15 +51,40 @@ def load_owid_education_inequality() -> pd.DataFrame:
         "Year": "year",
         "Inequality in education": "inequality_education"
     }, inplace=True)
-    
+
     # Type conversions
     df["year"] = pd.to_numeric(df["year"], errors="coerce").astype("Int64")
     df["inequality_education"] = pd.to_numeric(df["inequality_education"], errors="coerce")
-    
+
     # Exclude countries and drop rows with no value
     df = exclude_israel(df, "iso3")
     df.dropna(subset=["year", "inequality_education"], inplace=True)
-    
+
     # Select and reorder columns
     final_cols = ["iso3", "country_name", "year", "inequality_education"]
+    return df[[c for c in final_cols if c in df.columns]]
+
+
+def load_owid_caloric_cv() -> pd.DataFrame:
+    """
+    Loads OWID 'Coefficient of Variation (CV) of caloric intake' data.
+    Returns: iso3, country_name, year, cv_caloric_intake.
+    """
+    csv_name = FILES["OWID_CALORIC_CV"]
+    df = pd.read_csv(DATA_DIR / csv_name)
+
+    df.rename(columns={
+        "Code": "iso3",
+        "Entity": "country_name",
+        "Year": "year",
+        "Coefficient of Variation (CV) of caloric intake": "cv_caloric_intake",
+    }, inplace=True)
+
+    df["year"] = pd.to_numeric(df["year"], errors="coerce").astype("Int64")
+    df["cv_caloric_intake"] = pd.to_numeric(df["cv_caloric_intake"], errors="coerce")
+
+    df = exclude_israel(df, "iso3")
+    df.dropna(subset=["year", "cv_caloric_intake"], inplace=True)
+
+    final_cols = ["iso3", "country_name", "year", "cv_caloric_intake"]
     return df[[c for c in final_cols if c in df.columns]]

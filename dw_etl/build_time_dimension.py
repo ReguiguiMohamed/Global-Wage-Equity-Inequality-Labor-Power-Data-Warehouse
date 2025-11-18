@@ -1,29 +1,19 @@
 import pandas as pd
 from config import OUT
 
-def build_dim_time(dataframes: list[pd.DataFrame]) -> pd.DataFrame:
+def build_dim_time() -> pd.DataFrame:
     """
-    Builds a time dimension table from a list of dataframes.
-
-    Args:
-        dataframes: A list of pandas DataFrames, each with a 'year' column.
-
-    Returns:
-        A DataFrame representing the time dimension.
+    Builds a static time dimension table from 1800 to 2024.
     """
-    min_year, max_year = 9999, 0
-    for df in dataframes:
-        if 'year' in df.columns:
-            min_year = min(min_year, df['year'].min())
-            max_year = max(max_year, df['year'].max())
-
-    years = range(int(min_year), int(max_year) + 1)
+    years = range(1800, 2025)
     dim_time = pd.DataFrame({'year': years})
     dim_time['time_key'] = dim_time.index
     dim_time['decade'] = (dim_time['year'] // 10) * 10
-    dim_time['pre_2008_crisis_flag'] = dim_time['year'] < 2008
-    dim_time['post_covid_flag'] = dim_time['year'] >= 2020
+    dim_time['five_year_period'] = (dim_time['year'] // 5) * 5
+    dim_time['is_crisis_year'] = dim_time['year'].isin([2008, 2020])
+    dim_time['is_pre_covid'] = dim_time['year'] < 2020
+    dim_time['is_post_covid'] = dim_time['year'] >= 2020
 
     dim_time.to_csv(OUT["DIM_TIME"], index=False)
-    print(f"✓ Dimension 'Dim_Time' built with {len(dim_time)} years.")
+    print(f"[INFO] Dimension 'Dim_Time' built with {len(dim_time)} years.")
     return dim_time
