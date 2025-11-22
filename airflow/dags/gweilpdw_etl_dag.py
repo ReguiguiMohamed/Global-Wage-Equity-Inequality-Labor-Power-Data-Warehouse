@@ -80,6 +80,114 @@ def get_sql_datatype(dtype):
         return 'NVARCHAR(255)'  # Default for unknown types
 
 
+def normalize_float_value(x):
+    """
+    Robustly convert any value to a valid SQL float or None.
+    Handles strings, empty values, NaN, inf, and edge cases.
+    """
+    # Handle None and NaN first
+    if x is None or (isinstance(x, float) and (pd.isna(x) or x != x)):
+        return None
+
+    # Handle empty strings or whitespace-only strings
+    if isinstance(x, str):
+        stripped = x.strip()
+        if stripped == "" or stripped.lower() in ["", "null", "nan", "n/a", "na", "#n/a", "none"]:
+            return None
+        try:
+            val = float(stripped)
+        except (ValueError, TypeError):
+            return None
+    else:
+        try:
+            val = float(x)
+        except (ValueError, TypeError):
+            return None
+
+    # Handle special float values
+    if pd.isna(val) or val != val:  # NaN check
+        return None
+    if val == float('inf') or val == float('-inf'):
+        return None
+
+    # Check for precision/scale issues (numbers too large or with too many decimals)
+    # SQL Server FLOAT has limits - be cautious with extremely large numbers
+    if abs(val) > 1e38:
+        print(f"Warning: Value {val} exceeds SQL Server FLOAT limits, converting to None")
+        return None
+
+    return val
+
+
+def clean_dataframe_strict(df):
+    """
+    Aggressively clean DataFrame before sending to SQL Server.
+    Focuses on identifying and converting problematic columns.
+    """
+    df_cleaned = df.copy()
+
+    for col in df_cleaned.columns:
+        col_lower = col.lower()
+
+        # For numeric columns, apply strict normalization
+        if any(x in col_lower for x in ['value', 'amount', 'percentage', 'rate', 'ratio', 'index', 'count']):
+            print(f"Normalizing numeric column: {col}")
+            df_cleaned[col] = df_cleaned[col].apply(normalize_float_value)
+            # Convert to nullable float if not already
+            df_cleaned[col] = df_cleaned[col].astype('object')  # Keep as object until insert
+
+        # For text columns, ensure no invalid empty strings
+        elif col_lower not in ['is_oecd', 'is_eu', 'is_g20']:  # Skip boolean columns
+            # Convert completely empty strings to None
+            df_cleaned[col] = df_cleaned[col].apply(
+                lambda x: None if (isinstance(x, str) and x.strip() == "") else x
+            )
+
+    return df_cleaned
+
+
+def validate_data_before_insert(df, table_name, schema_name):
+    """
+    Validate data types before attempting insert.
+    Print warnings about suspicious data.
+    """
+    print(f"\n=== Validating data for {schema_name}.{table_name} ===")
+
+    for col in df.columns:
+        col_lower = col.lower()
+
+        # Check for numeric columns
+        if any(x in col_lower for x in ['value', 'amount', 'percentage', 'rate', 'ratio', 'index']):
+            non_null_vals = df[col].dropna()
+            if len(non_null_vals) > 0:
+                try:
+                    # Try to convert all non-null values
+                    numeric_vals = pd.to_numeric(non_null_vals, errors='coerce')
+                    null_count = numeric_vals.isna().sum()
+                    if null_count > 0:
+                        print(f"  WARNING: Column '{col}' has {null_count} values that couldn't convert to float")
+                        # Show examples of problematic values
+                        problem_vals = non_null_vals[numeric_vals.isna()].unique()[:5]
+                        print(f"    Examples: {problem_vals.tolist()}")
+                except Exception as e:
+                    print(f"  ERROR validating column '{col}': {str(e)}")
+
+    print(f"=== Validation complete ===\n")
+
+
+def safe_tuple_convert(row):
+    """
+    Convert row to tuple, ensuring floats are Python float or None.
+    This prevents pyodbc from receiving invalid types.
+    """
+    return tuple(
+        None if (val is None or (isinstance(val, float) and (pd.isna(val) or val != val)))
+        else float(val) if isinstance(val, (int, float)) and not pd.isna(val)
+        else val
+        for val in row
+    )
+
+
 def write_csvs_to_mssql():
     """Task to write generated CSVs to MSSQL database with proper schema structure"""
     from airflow.hooks.base import BaseHook
@@ -330,32 +438,71 @@ def write_csvs_to_mssql():
             # Clean the DataFrame
             df_cleaned = clean_dataframe(df[insert_columns])
 
-            # For fact tables, specifically handle the 'value' column to ensure proper float conversion
-            if schema_name == 'fact' and 'value' in df_cleaned.columns:
-                def normalize_value(x):
-                    try:
-                        v = float(x)
-                    except (TypeError, ValueError):
+            # For geography dimension, normalise boolean flags for BIT columns.
+            # Use string '0'/'1' so SQL Server can safely CAST to BIT without
+            # any ambiguity about float vs integer parameter types.
+            if table_name == "Dim_Geography":
+                def to_bit_str(x):
+                    if x is None or pd.isna(x):
                         return None
-                    if v != v or v == float('inf') or v == float('-inf'):  # Check for NaN, inf, -inf
-                        return None
-                    return v
+                    if isinstance(x, bool):
+                        return "1" if x else "0"
+                    if isinstance(x, (int, float)):
+                        return "1" if x != 0 else "0"
+                    if isinstance(x, str):
+                        v = x.strip().lower()
+                        if v in ("true", "t", "yes", "y", "1"):
+                            return "1"
+                        if v in ("false", "f", "no", "n", "0"):
+                            return "0"
+                    return None
 
-                df_cleaned['value'] = df_cleaned['value'].apply(normalize_value)
+                for flag_col in ["is_oecd", "is_eu", "is_g20"]:
+                    if flag_col in df_cleaned.columns:
+                        df_cleaned[flag_col] = df_cleaned[flag_col].apply(to_bit_str)
+
+            # For dimension tables, normalize boolean flag columns to 0/1 for BIT columns
+            if schema_name == 'dim':
+                # Normalize boolean flag columns to 0/1 for BIT columns
+                for col in ["is_oecd", "is_eu", "is_g20"]:
+                    if col in df_cleaned.columns:
+                        def to_bit(x):
+                            if x is None or pd.isna(x):
+                                return None
+                            if isinstance(x, bool):
+                                return 1 if x else 0
+                            if isinstance(x, (int, float)):
+                                return 1 if x != 0 else 0
+                            if isinstance(x, str):
+                                v = x.strip().lower()
+                                if v in ("true", "t", "yes", "y", "1"):
+                                    return 1
+                                if v in ("false", "f", "no", "n", "0"):
+                                    return 0
+                            # Fallback: treat anything else as NULL
+                            return None
+
+                        df_cleaned[col] = df_cleaned[col].apply(to_bit)
 
             # Insert data in chunks using pyodbc executemany to avoid parameter/size limits
             print(f"Starting chunked insert of {total_rows} rows into {full_table_name} with chunk size {chunk_size}...")
             for i in range(0, total_rows, chunk_size):
                 chunk = df_cleaned.iloc[i:i + chunk_size]  # Use cleaned data
 
-                # Convert chunk to list of tuples
-                data_tuples = [tuple(row) for row in chunk.values]
+                # Use safe conversion instead of direct tuple()
+                data_tuples = [safe_tuple_convert(row) for row in chunk.values]
 
                 # Execute the insert for this chunk
-                cursor.executemany(insert_sql, data_tuples)
-                cnxn.commit()  # Commit after each chunk
-
-                print(f"Wrote rows {i + 1} to {min(i + chunk_size, total_rows)} of {total_rows} to {full_table_name}")
+                try:
+                    cursor.executemany(insert_sql, data_tuples)
+                    cnxn.commit()  # Commit after each chunk
+                    print(f"Wrote rows {i + 1} to {min(i + chunk_size, total_rows)} of {total_rows} to {full_table_name}")
+                except pyodbc.ProgrammingError as e:
+                    print(f"ERROR inserting chunk at row {i}: {str(e)}")
+                    # Print first problematic row for debugging
+                    if data_tuples:
+                        print(f"First row in chunk: {data_tuples[0]}")
+                    raise
 
         else:
             print(f"Warning: {csv_filename} not found in {out_dir}")
@@ -470,35 +617,66 @@ def write_csvs_to_mssql():
             placeholders = ', '.join(['?' for _ in insert_columns])
             insert_sql = f"INSERT INTO {full_table_name} ({', '.join([f'[{col}]' for col in insert_columns])}) VALUES ({placeholders})"
 
-            # Clean the DataFrame
-            df_cleaned = clean_dataframe(df[insert_columns])
+            # Step 1: Initial cleaning
+            df = df.replace({pd.NA: None})
+            df = df.where(pd.notnull(df), None)
+            df = df.replace('', None)  # Replace empty strings with None
 
-            # For fact tables, specifically handle the 'value' column to ensure proper float conversion
-            if schema_name == 'fact' and 'value' in df_cleaned.columns:
-                def normalize_value(x):
-                    try:
-                        v = float(x)
-                    except (TypeError, ValueError):
-                        return None
-                    if v != v or v == float('inf') or v == float('-inf'):  # Check for NaN, inf, -inf
-                        return None
-                    return v
+            # Step 2: Aggressive normalization of numeric columns
+            for col in df.columns:
+                col_lower = col.lower()
+                if any(x in col_lower for x in ['value', 'amount', 'percentage', 'rate', 'ratio', 'index', 'count']):
+                    df[col] = pd.to_numeric(df[col], errors='coerce')
+                    df[col] = df[col].replace([float('inf'), float('-inf')], None)
 
-                df_cleaned['value'] = df_cleaned['value'].apply(normalize_value)
+            # Step 3: Validate before insert
+            validate_data_before_insert(df, table_name, schema_name)
+
+            # Step 4: Apply final cleaning
+            df_cleaned = clean_dataframe_strict(df[insert_columns])
+
+            # For dimension tables, normalize boolean flag columns to 0/1 for BIT columns
+            if schema_name == 'dim':
+                # Normalize boolean flag columns to 0/1 for BIT columns
+                for col in ["is_oecd", "is_eu", "is_g20"]:
+                    if col in df_cleaned.columns:
+                        def to_bit(x):
+                            if x is None or pd.isna(x):
+                                return None
+                            if isinstance(x, bool):
+                                return 1 if x else 0
+                            if isinstance(x, (int, float)):
+                                return 1 if x != 0 else 0
+                            if isinstance(x, str):
+                                v = x.strip().lower()
+                                if v in ("true", "t", "yes", "y", "1"):
+                                    return 1
+                                if v in ("false", "f", "no", "n", "0"):
+                                    return 0
+                            # Fallback: treat anything else as NULL
+                            return None
+
+                        df_cleaned[col] = df_cleaned[col].apply(to_bit)
 
             # Insert data in chunks using pyodbc executemany to avoid parameter/size limits
             print(f"Starting chunked insert of {total_rows} rows into {full_table_name} with chunk size {chunk_size}...")
             for i in range(0, total_rows, chunk_size):
                 chunk = df_cleaned.iloc[i:i+chunk_size]  # Use cleaned data
 
-                # Convert chunk to list of tuples
-                data_tuples = [tuple(row) for row in chunk.values]
+                # Use safe conversion instead of direct tuple()
+                data_tuples = [safe_tuple_convert(row) for row in chunk.values]
 
                 # Execute the insert for this chunk
-                cursor.executemany(insert_sql, data_tuples)
-                cnxn.commit()  # Commit after each chunk
-
-                print(f"Wrote rows {i+1} to {min(i+chunk_size, total_rows)} of {total_rows} to {full_table_name}")
+                try:
+                    cursor.executemany(insert_sql, data_tuples)
+                    cnxn.commit()  # Commit after each chunk
+                    print(f"Wrote rows {i+1} to {min(i+chunk_size, total_rows)} of {total_rows} to {full_table_name}")
+                except pyodbc.ProgrammingError as e:
+                    print(f"ERROR inserting chunk at row {i}: {str(e)}")
+                    # Print first problematic row for debugging
+                    if data_tuples:
+                        print(f"First row in chunk: {data_tuples[0]}")
+                    raise
 
         else:
             print(f"Warning: {csv_filename} not found in {out_dir}")
