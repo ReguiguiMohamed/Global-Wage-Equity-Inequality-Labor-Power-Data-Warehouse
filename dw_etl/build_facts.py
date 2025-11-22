@@ -1,4 +1,5 @@
 import pandas as pd
+from typing import Union
 from config import OUT
 from utils import profile_block
 
@@ -75,13 +76,13 @@ def create_economy_fact_table(
         how="left",
     )
 
-    # Sex and age dimensions
-    dim_sex_simplified = dim_sex[["sex_label", "sex_key"]]
+    # Gender and age dimensions
+    dim_gender_simplified = dim_sex[["gender_label", "gender_key"]]  # Updated to use new column names
     long_df = pd.merge(
         long_df,
-        dim_sex_simplified,
-        left_on="sex",
-        right_on="sex_label",
+        dim_gender_simplified,
+        left_on="sex",  # Still merging on the "sex" column from the source data
+        right_on="gender_label",  # But now matching to the new gender_label column
         how="left",
     )
 
@@ -97,7 +98,7 @@ def create_economy_fact_table(
         [
             "geography_key",
             "time_key",
-            "sex_key",
+            "gender_key",  # Updated to use new gender_key column name
             "age_key",
             "economic_classification_key",
             "indicator_key",

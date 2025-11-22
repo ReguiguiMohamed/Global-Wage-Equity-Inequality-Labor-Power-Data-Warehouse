@@ -1,5 +1,6 @@
 import re
 import pandas as pd
+from typing import List
 from config import EXCLUDE_ISO3
 
 
@@ -14,7 +15,7 @@ ISO_ALIASES = {
 }
 
 
-def year_columns(df: pd.DataFrame) -> list[str]:
+def year_columns(df: pd.DataFrame) -> List[str]:
     """Return columns that look like year values (YYYY)."""
     return [c for c in df.columns if re.fullmatch(r"\d{4}", str(c))]
 

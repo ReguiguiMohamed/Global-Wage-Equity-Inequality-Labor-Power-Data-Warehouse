@@ -64,10 +64,10 @@ CREATE TABLE dim.Dim_Age (
 );
 
 -- Dim_Sex
-CREATE TABLE dim.Dim_Sex (
-    sex_code CHAR(1),
-    sex_label VARCHAR(255),
-    sex_key INT PRIMARY KEY
+CREATE TABLE dim.Dim_Gender (
+    gender_code CHAR(1),
+    gender_label VARCHAR(255),
+    gender_key INT PRIMARY KEY
 );
 
 -- Dim_Source
