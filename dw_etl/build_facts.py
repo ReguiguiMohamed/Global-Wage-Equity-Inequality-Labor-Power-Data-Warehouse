@@ -77,12 +77,12 @@ def create_economy_fact_table(
     )
 
     # Gender and age dimensions
-    dim_gender_simplified = dim_sex[["gender_label", "gender_key"]]  # Updated to use new column names
+    dim_gender_simplified = dim_sex[["gender_label", "gender_key"]]
     long_df = pd.merge(
         long_df,
         dim_gender_simplified,
-        left_on="sex",  # Still merging on the "sex" column from the source data
-        right_on="gender_label",  # But now matching to the new gender_label column
+        left_on="sex",
+        right_on="gender_label",
         how="left",
     )
 
@@ -98,13 +98,26 @@ def create_economy_fact_table(
         [
             "geography_key",
             "time_key",
-            "gender_key",  # Updated to use new gender_key column name
+            "gender_key",
             "age_key",
             "economic_classification_key",
             "indicator_key",
             "value",
         ]
     ]
+
+    # Data quality rules for Fact_Economy:
+    # - geography_key must not be null
+    # - age_key must not be null
+    # - all other dimension keys except economic_classification_key must not be null
+    required_non_null = [
+        "geography_key",
+        "time_key",
+        "gender_key",
+        "age_key",
+        "indicator_key",
+    ]
+    fact_table = fact_table.dropna(subset=required_non_null)
 
     write_fact(OUT[name], fact_table, name)
     return fact_table
@@ -196,7 +209,7 @@ def create_fact_table(
         how="left",
     )
 
-    # For these facts, sex/age are not meaningful – keep schema lean
+    # For these facts, sex/age are not meaningful; keep schema lean
     fact_table = long_df[
         [
             "geography_key",
@@ -207,6 +220,17 @@ def create_fact_table(
             "value",
         ]
     ]
+
+    # Data quality rules for generic facts (inequality, social development):
+    # - geography_key must not be null
+    # - all other dimension keys except economic_classification_key must not be null
+    required_non_null = [
+        "geography_key",
+        "time_key",
+        "source_key",
+        "indicator_key",
+    ]
+    fact_table = fact_table.dropna(subset=required_non_null)
 
     write_fact(OUT[name], fact_table, name)
     return fact_table
@@ -281,7 +305,7 @@ def build_and_write_facts(
         wb_lit,
         owid_life_expectancy,
         owid_education_inequality,
-        owid_caloric_cv,      # ← new
+        owid_caloric_cv,
         min_wage,
         owid_gov,
     ]

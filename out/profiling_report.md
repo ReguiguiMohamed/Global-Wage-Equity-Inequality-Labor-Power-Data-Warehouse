@@ -79,13 +79,13 @@
 
 # Fact Table Profiles
 ### Fact_Economy
-- rows: 902,909
-- top null ratios: geography_key=17.9%, economic_classification_key=17.9%, age_key=7.4%, gender_key=0.0%, time_key=0.0%, indicator_key=0.0%
+- rows: 684,173
+- top null ratios: geography_key=0.0%, time_key=0.0%, gender_key=0.0%, age_key=0.0%, economic_classification_key=0.0%, indicator_key=0.0%
 
 ### Fact_Inequality
-- rows: 21,260
-- top null ratios: economic_classification_key=11.1%, geography_key=10.6%, time_key=0.0%, source_key=0.0%, indicator_key=0.0%, value=0.0%
+- rows: 19,014
+- top null ratios: economic_classification_key=0.6%, geography_key=0.0%, time_key=0.0%, source_key=0.0%, indicator_key=0.0%, value=0.0%
 
 ### Fact_SocialDevelopment
-- rows: 25,845
-- top null ratios: economic_classification_key=4.9%, geography_key=4.2%, time_key=0.1%, source_key=0.0%, indicator_key=0.0%, value=0.0%
+- rows: 24,738
+- top null ratios: economic_classification_key=0.7%, geography_key=0.0%, time_key=0.0%, source_key=0.0%, indicator_key=0.0%, value=0.0%

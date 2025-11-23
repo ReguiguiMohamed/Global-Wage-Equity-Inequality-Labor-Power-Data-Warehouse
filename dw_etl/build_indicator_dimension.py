@@ -40,12 +40,25 @@ def build_dim_indicator():
         ('cv_caloric_intake', 'Coefficient of Variation of Caloric Intake', 'Social', 'Nutrition', 'Inequality', 'index', 'OWID'),
     ]
 
-    dim_indicator = pd.DataFrame(indicator_data, columns=[
-        'indicator_code', 'indicator_name', 'domain', 'theme', 'category', 'unit', 'source'
-    ])
-    
-    dim_indicator['indicator_key'] = dim_indicator.index
+    dim_indicator = pd.DataFrame(
+        indicator_data,
+        columns=[
+            "indicator_code",
+            "indicator_name",
+            "domain",
+            "theme",
+            "category",
+            "unit",
+            "source",
+        ],
+    )
 
-    dim_indicator.to_csv(OUT["DIM_INDICATOR"], index=False)
+    dim_indicator["indicator_key"] = dim_indicator.index
+
+    # Keep `source` in the in-memory DataFrame for building facts,
+    # but do not persist it to the SQL dimension table.
+    dim_indicator_for_db = dim_indicator.drop(columns=["source"])
+
+    dim_indicator_for_db.to_csv(OUT["DIM_INDICATOR"], index=False)
     print(f"[INFO] Dimension 'Dim_Indicator' built with {len(dim_indicator)} indicators.")
     return dim_indicator

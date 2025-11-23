@@ -37,8 +37,6 @@
     CREATE TABLE dim.Dim_Time (
         year INT,
         time_key INT PRIMARY KEY,
-        decade INT,
-        five_year_period INT,
         is_crisis_year BIT,
         is_pre_covid BIT,
         is_post_covid BIT
@@ -52,7 +50,6 @@
         theme VARCHAR(255),
         category VARCHAR(255),
         unit VARCHAR(255),
-        source VARCHAR(255),
         indicator_key INT PRIMARY KEY
     );
 
