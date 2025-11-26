@@ -79,7 +79,7 @@
 
 # Fact Table Profiles
 ### Fact_Economy
-- rows: 684,173
+- rows: 174,744
 - top null ratios: geography_key=0.0%, time_key=0.0%, gender_key=0.0%, age_key=0.0%, economic_classification_key=0.0%, indicator_key=0.0%
 
 ### Fact_Inequality
