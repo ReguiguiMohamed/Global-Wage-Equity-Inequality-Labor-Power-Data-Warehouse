@@ -1,0 +1,399 @@
+﻿<DataSourceView xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ddl2="http://schemas.microsoft.com/analysisservices/2003/engine/2" xmlns:ddl2_2="http://schemas.microsoft.com/analysisservices/2003/engine/2/2" xmlns:ddl100_100="http://schemas.microsoft.com/analysisservices/2008/engine/100/100" xmlns:ddl200="http://schemas.microsoft.com/analysisservices/2010/engine/200" xmlns:ddl200_200="http://schemas.microsoft.com/analysisservices/2010/engine/200/200" xmlns:ddl300="http://schemas.microsoft.com/analysisservices/2011/engine/300" xmlns:ddl300_300="http://schemas.microsoft.com/analysisservices/2011/engine/300/300" xmlns:ddl400="http://schemas.microsoft.com/analysisservices/2012/engine/400" xmlns:ddl400_400="http://schemas.microsoft.com/analysisservices/2012/engine/400/400" xmlns:ddl500="http://schemas.microsoft.com/analysisservices/2013/engine/500" xmlns:ddl500_500="http://schemas.microsoft.com/analysisservices/2013/engine/500/500" xmlns:dwd="http://schemas.microsoft.com/DataWarehouse/Designer/1.0" dwd:design-time-name="3b0a86d0-7c70-4f68-be00-a1eb4b9fae3c" xmlns="http://schemas.microsoft.com/analysisservices/2003/engine">
+  <ID>DW Inequality</ID>
+  <Name>DW Inequality</Name>
+  <CreatedTimestamp>0001-01-01T00:00:00Z</CreatedTimestamp>
+  <LastSchemaUpdate>0001-01-01T00:00:00Z</LastSchemaUpdate>
+  <Annotations>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:ShowFriendlyNames</Name>
+      <Value>true</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:CurrentLayout</Name>
+      <Value>_ALL_TABLES_</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:SchemaRestriction</Name>
+      <Value></Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:RetrieveRelationships</Name>
+      <Value>true</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:Layouts</Name>
+      <Value>
+        <Layouts xmlns="">
+          <Diagram>
+            <Name>_ALL_TABLES_</Name>
+            <DiagramLayout />
+            <ShowRelationshipNames>False</ShowRelationshipNames>
+            <UseDiagramDefaultLayout>True</UseDiagramDefaultLayout>
+            <DiagramViewPortLeft>0</DiagramViewPortLeft>
+            <DiagramViewPortTop>0</DiagramViewPortTop>
+            <DiagramBoundingLeft>0</DiagramBoundingLeft>
+            <DiagramBoundingTop>0</DiagramBoundingTop>
+            <DiagramZoom>100</DiagramZoom>
+          </Diagram>
+        </Layouts>
+      </Value>
+    </Annotation>
+  </Annotations>
+  <DataSourceID>DW Inequality</DataSourceID>
+  <Schema>
+    <xs:schema id="DW_x0020_Inequality" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop">
+      <xs:element name="DW_x0020_Inequality" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:design-time-name="d0bf8628-c5ee-4c67-be7d-6cc9c0319d5e">
+        <xs:complexType>
+          <xs:choice minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="dim_Dim_Age" msprop:DbTableName="Dim_Age" msprop:FriendlyName="Dim_Age" msprop:TableType="Table" msprop:DbSchemaName="dim" msprop:design-time-name="ae07182d-489f-45ef-91fd-7d1c182cc39e">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="age_group" msprop:FriendlyName="age_group" msprop:DbColumnName="age_group" msprop:design-time-name="90880b8e-0b7a-4f4e-86eb-d67cb188006d" minOccurs="0">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:maxLength value="255" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                  <xs:element name="age_category" msprop:FriendlyName="age_category" msprop:DbColumnName="age_category" msprop:design-time-name="59ac6f43-171e-4170-a67c-df7e3d77b17c" minOccurs="0">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:maxLength value="255" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                  <xs:element name="age_key" msprop:FriendlyName="age_key" msprop:DbColumnName="age_key" msprop:design-time-name="d1330881-7998-45a3-9ff7-bbc539f2f27f" type="xs:int" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="dim_Dim_Economic_Classification" msprop:DbTableName="Dim_Economic_Classification" msprop:FriendlyName="Dim_Economic_Classification" msprop:TableType="Table" msprop:DbSchemaName="dim" msprop:design-time-name="0e7dbd44-6ee0-47ef-bd25-cfcb3124de43">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="income_group" msprop:FriendlyName="income_group" msprop:DbColumnName="income_group" msprop:design-time-name="e8f9dc44-abac-4efa-8bdb-e837900c53ac" minOccurs="0">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:maxLength value="255" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                  <xs:element name="development_status" msprop:FriendlyName="development_status" msprop:DbColumnName="development_status" msprop:design-time-name="82bb9160-5d3a-4214-9e8a-248264ea6b77" minOccurs="0">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:maxLength value="255" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                  <xs:element name="economic_classification_key" msprop:FriendlyName="economic_classification_key" msprop:DbColumnName="economic_classification_key" msprop:design-time-name="d6ff6685-d966-4ec3-b6cd-e5d76cffd481" type="xs:int" />
+                  <xs:element name="valid_from_year" msprop:FriendlyName="valid_from_year" msprop:DbColumnName="valid_from_year" msprop:design-time-name="a1f07002-d955-4452-bc83-e1578877ad91" type="xs:int" minOccurs="0" />
+                  <xs:element name="valid_to_year" msprop:FriendlyName="valid_to_year" msprop:DbColumnName="valid_to_year" msprop:design-time-name="6687bc3b-0a05-492b-b330-42c7968b8b59" type="xs:int" minOccurs="0" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="dim_Dim_Gender" msprop:DbTableName="Dim_Gender" msprop:FriendlyName="Dim_Gender" msprop:TableType="Table" msprop:DbSchemaName="dim" msprop:design-time-name="f457ab2e-a096-4f90-a51d-ee33f2a6433a">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="gender_code" msprop:FriendlyName="gender_code" msprop:DbColumnName="gender_code" msprop:design-time-name="b7386eeb-5b42-429c-a024-3e3a92f29b6b" minOccurs="0">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:maxLength value="1" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                  <xs:element name="gender_label" msprop:FriendlyName="gender_label" msprop:DbColumnName="gender_label" msprop:design-time-name="236f743f-a2c7-4bf5-9d1a-887caf0c272a" minOccurs="0">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:maxLength value="255" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                  <xs:element name="gender_key" msprop:FriendlyName="gender_key" msprop:DbColumnName="gender_key" msprop:design-time-name="b3700630-882e-484a-b859-8145a11107ba" type="xs:int" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="dim_Dim_Geography" msprop:DbTableName="Dim_Geography" msprop:FriendlyName="Dim_Geography" msprop:TableType="Table" msprop:DbSchemaName="dim" msprop:design-time-name="2c5ed1a5-c45e-4422-ad99-067f19c5ed41">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="geography_key" msprop:FriendlyName="geography_key" msprop:DbColumnName="geography_key" msprop:design-time-name="f83b5a21-6dc8-4902-9731-ea95870d224a" type="xs:int" />
+                  <xs:element name="iso3" msprop:FriendlyName="iso3" msprop:DbColumnName="iso3" msprop:design-time-name="198826df-aac8-4a18-bebc-18f96f2cbf9a" minOccurs="0">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:maxLength value="3" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                  <xs:element name="country_name" msprop:FriendlyName="country_name" msprop:DbColumnName="country_name" msprop:design-time-name="1716d4c8-f5b6-4c3f-92e1-b0ec6b4bc832" minOccurs="0">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:maxLength value="255" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                  <xs:element name="region" msprop:FriendlyName="region" msprop:DbColumnName="region" msprop:design-time-name="12678b02-34dd-4066-9426-5c3db567886e" minOccurs="0">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:maxLength value="255" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                  <xs:element name="continent" msprop:FriendlyName="continent" msprop:DbColumnName="continent" msprop:design-time-name="7cc4369d-5f4c-4311-8e1a-525323a35481" minOccurs="0">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:maxLength value="255" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                  <xs:element name="income_group" msprop:FriendlyName="income_group" msprop:DbColumnName="income_group" msprop:design-time-name="db2deae4-f1e7-49ab-835a-a5d9275a0863" minOccurs="0">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:maxLength value="255" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                  <xs:element name="population_latest" msprop:FriendlyName="population_latest" msprop:DbColumnName="population_latest" msprop:design-time-name="64f5bf41-7455-4ea2-8a47-d94acc535228" type="xs:double" minOccurs="0" />
+                  <xs:element name="gdp_per_capita" msprop:FriendlyName="gdp_per_capita" msprop:DbColumnName="gdp_per_capita" msprop:design-time-name="740fe38a-436f-4c36-87ec-87c6fb7a9980" type="xs:double" minOccurs="0" />
+                  <xs:element name="is_oecd" msprop:FriendlyName="is_oecd" msprop:DbColumnName="is_oecd" msprop:design-time-name="90763b17-7613-490c-921c-ff585258fbe2" type="xs:boolean" minOccurs="0" />
+                  <xs:element name="is_eu" msprop:FriendlyName="is_eu" msprop:DbColumnName="is_eu" msprop:design-time-name="6d7c2149-496b-496d-b592-7a017a87c46a" type="xs:boolean" minOccurs="0" />
+                  <xs:element name="is_g20" msprop:FriendlyName="is_g20" msprop:DbColumnName="is_g20" msprop:design-time-name="50819e47-fc27-4d45-8cee-89cadf7e14b8" type="xs:boolean" minOccurs="0" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="dim_Dim_Indicator" msprop:DbTableName="Dim_Indicator" msprop:FriendlyName="Dim_Indicator" msprop:TableType="Table" msprop:DbSchemaName="dim" msprop:design-time-name="291838be-51c2-4787-bfb6-a232434a6a57">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="indicator_code" msprop:FriendlyName="indicator_code" msprop:DbColumnName="indicator_code" msprop:design-time-name="7eabad4e-2531-4c90-b67e-bb4f886b2494" minOccurs="0">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:maxLength value="255" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                  <xs:element name="indicator_name" msprop:FriendlyName="indicator_name" msprop:DbColumnName="indicator_name" msprop:design-time-name="7320029a-2b96-464b-90aa-c3ae1b6c34c3" minOccurs="0">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:maxLength value="255" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                  <xs:element name="domain" msprop:FriendlyName="domain" msprop:DbColumnName="domain" msprop:design-time-name="f46d51cd-33ad-4f49-bd6a-21e75305ac27" minOccurs="0">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:maxLength value="255" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                  <xs:element name="theme" msprop:FriendlyName="theme" msprop:DbColumnName="theme" msprop:design-time-name="7e81a8ac-d4a2-49c7-8e22-4573a39dd483" minOccurs="0">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:maxLength value="255" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                  <xs:element name="category" msprop:FriendlyName="category" msprop:DbColumnName="category" msprop:design-time-name="867b0375-18e8-4899-a10d-202493ef1faf" minOccurs="0">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:maxLength value="255" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                  <xs:element name="unit" msprop:FriendlyName="unit" msprop:DbColumnName="unit" msprop:design-time-name="58d7a85d-3d26-4f27-b574-c9e016df5190" minOccurs="0">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:maxLength value="255" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                  <xs:element name="indicator_key" msprop:FriendlyName="indicator_key" msprop:DbColumnName="indicator_key" msprop:design-time-name="66c9feec-a8ec-4a0f-a712-0b8c1f3e4d7a" type="xs:int" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="dim_Dim_Source" msprop:DbTableName="Dim_Source" msprop:FriendlyName="Dim_Source" msprop:TableType="Table" msprop:DbSchemaName="dim" msprop:design-time-name="4a30e5b6-6355-4f0e-b49e-8bb072a439c2">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="source_code" msprop:FriendlyName="source_code" msprop:DbColumnName="source_code" msprop:design-time-name="928dde34-6a63-4173-a5a5-8fa8d118a6a3" minOccurs="0">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:maxLength value="255" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                  <xs:element name="full_name" msprop:FriendlyName="full_name" msprop:DbColumnName="full_name" msprop:design-time-name="43d9c4df-903c-4070-a193-3c1e9c5e9082" minOccurs="0">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:maxLength value="255" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                  <xs:element name="organization" msprop:FriendlyName="organization" msprop:DbColumnName="organization" msprop:design-time-name="441a84d3-0032-4923-a4a7-d2c8c37209f6" minOccurs="0">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:maxLength value="255" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                  <xs:element name="data_quality_rating" msprop:FriendlyName="data_quality_rating" msprop:DbColumnName="data_quality_rating" msprop:design-time-name="06a24ea6-b5a3-4212-8edc-dc847630a3df" minOccurs="0">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:maxLength value="255" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                  <xs:element name="update_frequency" msprop:FriendlyName="update_frequency" msprop:DbColumnName="update_frequency" msprop:design-time-name="8ff39b3d-450a-489d-ba70-871613e89ddb" minOccurs="0">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:maxLength value="255" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                  <xs:element name="coverage_start_year" msprop:FriendlyName="coverage_start_year" msprop:DbColumnName="coverage_start_year" msprop:design-time-name="4c37eda0-0de0-4457-90f0-f0c03838c4b2" type="xs:int" minOccurs="0" />
+                  <xs:element name="coverage_end_year" msprop:FriendlyName="coverage_end_year" msprop:DbColumnName="coverage_end_year" msprop:design-time-name="1a4614e5-a3bc-4546-8424-f7d83b3f072f" type="xs:int" minOccurs="0" />
+                  <xs:element name="source_key" msprop:FriendlyName="source_key" msprop:DbColumnName="source_key" msprop:design-time-name="58a8425d-d7ab-4655-a8fd-3d8f1e07ae5d" type="xs:int" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="dim_Dim_Time" msprop:DbTableName="Dim_Time" msprop:FriendlyName="Dim_Time" msprop:TableType="Table" msprop:DbSchemaName="dim" msprop:design-time-name="e3df51ad-e21c-4129-8e29-38f0651c1f78">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="year" msprop:FriendlyName="year" msprop:DbColumnName="year" msprop:design-time-name="0a7c8695-a540-458c-8414-ef1f148b02da" type="xs:int" minOccurs="0" />
+                  <xs:element name="time_key" msprop:FriendlyName="time_key" msprop:DbColumnName="time_key" msprop:design-time-name="7513eed2-40eb-4a96-b92d-df1801869e8c" type="xs:int" />
+                  <xs:element name="is_crisis_year" msprop:FriendlyName="is_crisis_year" msprop:DbColumnName="is_crisis_year" msprop:design-time-name="22d1cb44-9d9f-4971-9c32-befa4a536c0d" type="xs:boolean" minOccurs="0" />
+                  <xs:element name="is_pre_covid" msprop:FriendlyName="is_pre_covid" msprop:DbColumnName="is_pre_covid" msprop:design-time-name="a4610a6f-9461-4795-a601-c55ecb906337" type="xs:boolean" minOccurs="0" />
+                  <xs:element name="is_post_covid" msprop:FriendlyName="is_post_covid" msprop:DbColumnName="is_post_covid" msprop:design-time-name="591464ae-a0d6-4191-abe8-24fc94ad2551" type="xs:boolean" minOccurs="0" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="fact_Fact_Economy" msprop:DbTableName="Fact_Economy" msprop:FriendlyName="Fact_Economy" msprop:TableType="Table" msprop:DbSchemaName="fact" msprop:design-time-name="165e6e75-65c8-4c79-a970-027c152468b8">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="geography_key" msprop:FriendlyName="geography_key" msprop:DbColumnName="geography_key" msprop:design-time-name="28dc7264-2e6f-4795-a293-719262de14ef" type="xs:int" minOccurs="0" />
+                  <xs:element name="time_key" msprop:FriendlyName="time_key" msprop:DbColumnName="time_key" msprop:design-time-name="32440a90-3b23-4a76-bbee-a435dacd270c" type="xs:int" minOccurs="0" />
+                  <xs:element name="gender_key" msprop:FriendlyName="gender_key" msprop:DbColumnName="gender_key" msprop:design-time-name="7bcc96bd-7fa0-41a7-b2b5-110775d85038" type="xs:int" minOccurs="0" />
+                  <xs:element name="age_key" msprop:FriendlyName="age_key" msprop:DbColumnName="age_key" msprop:design-time-name="43befccb-fd46-427b-b5d0-e6c864baeead" type="xs:int" minOccurs="0" />
+                  <xs:element name="economic_classification_key" msprop:FriendlyName="economic_classification_key" msprop:DbColumnName="economic_classification_key" msprop:design-time-name="4628b93f-d709-4e52-ad34-b8d84b48a48c" type="xs:int" minOccurs="0" />
+                  <xs:element name="indicator_key" msprop:FriendlyName="indicator_key" msprop:DbColumnName="indicator_key" msprop:design-time-name="f282a481-2ac3-4dcf-a5ed-1add9e399631" type="xs:int" minOccurs="0" />
+                  <xs:element name="value" msprop:FriendlyName="value" msprop:DbColumnName="value" msprop:design-time-name="4be3be53-1094-4899-908e-4649b5023d0f" type="xs:double" minOccurs="0" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="fact_Fact_Inequality" msprop:DbTableName="Fact_Inequality" msprop:FriendlyName="Fact_Inequality" msprop:TableType="Table" msprop:DbSchemaName="fact" msprop:design-time-name="5893bc50-b9af-4665-84b0-6705c1fd021c">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="geography_key" msprop:FriendlyName="geography_key" msprop:DbColumnName="geography_key" msprop:design-time-name="8b6c8fec-10ce-42e7-a360-cc9551c53f75" type="xs:int" minOccurs="0" />
+                  <xs:element name="time_key" msprop:FriendlyName="time_key" msprop:DbColumnName="time_key" msprop:design-time-name="94d7991e-cca8-46dd-8ef5-c23ebfe19de2" type="xs:int" minOccurs="0" />
+                  <xs:element name="economic_classification_key" msprop:FriendlyName="economic_classification_key" msprop:DbColumnName="economic_classification_key" msprop:design-time-name="7c46b879-4022-4d44-a9af-c63c5be43f94" type="xs:int" minOccurs="0" />
+                  <xs:element name="source_key" msprop:FriendlyName="source_key" msprop:DbColumnName="source_key" msprop:design-time-name="099b3003-79a3-4bfb-845c-7884b8cb9ff7" type="xs:int" minOccurs="0" />
+                  <xs:element name="indicator_key" msprop:FriendlyName="indicator_key" msprop:DbColumnName="indicator_key" msprop:design-time-name="2894c4bb-763a-483f-bbd3-05d927718209" type="xs:int" minOccurs="0" />
+                  <xs:element name="value" msprop:FriendlyName="value" msprop:DbColumnName="value" msprop:design-time-name="3dc1c69c-e70c-4093-be01-278836a02ed4" type="xs:double" minOccurs="0" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="fact_Fact_SocialDevelopment" msprop:DbTableName="Fact_SocialDevelopment" msprop:FriendlyName="Fact_SocialDevelopment" msprop:TableType="Table" msprop:DbSchemaName="fact" msprop:design-time-name="d4ab3724-d6a8-44c5-92e4-80c5637376de">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="geography_key" msprop:FriendlyName="geography_key" msprop:DbColumnName="geography_key" msprop:design-time-name="ee55ed27-8574-4703-a410-174a59d5201f" type="xs:int" minOccurs="0" />
+                  <xs:element name="time_key" msprop:FriendlyName="time_key" msprop:DbColumnName="time_key" msprop:design-time-name="568f5541-29af-4448-9886-87958f2e2b72" type="xs:int" minOccurs="0" />
+                  <xs:element name="economic_classification_key" msprop:FriendlyName="economic_classification_key" msprop:DbColumnName="economic_classification_key" msprop:design-time-name="1ed6809f-6c3b-4c02-836f-add8bc34c057" type="xs:int" minOccurs="0" />
+                  <xs:element name="source_key" msprop:FriendlyName="source_key" msprop:DbColumnName="source_key" msprop:design-time-name="ffc308ac-ae83-4daa-a1f5-9d5304c336c0" type="xs:int" minOccurs="0" />
+                  <xs:element name="indicator_key" msprop:FriendlyName="indicator_key" msprop:DbColumnName="indicator_key" msprop:design-time-name="859e5ae1-f452-483e-89fe-dc7d294e6fbc" type="xs:int" minOccurs="0" />
+                  <xs:element name="value" msprop:FriendlyName="value" msprop:DbColumnName="value" msprop:design-time-name="300e68fa-765b-4108-a057-dc8f125d346f" type="xs:double" minOccurs="0" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+          </xs:choice>
+        </xs:complexType>
+        <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+          <xs:selector xpath=".//dim_Dim_Age" />
+          <xs:field xpath="age_key" />
+        </xs:unique>
+        <xs:unique name="dim_Dim_Economic_Classification_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+          <xs:selector xpath=".//dim_Dim_Economic_Classification" />
+          <xs:field xpath="economic_classification_key" />
+        </xs:unique>
+        <xs:unique name="dim_Dim_Gender_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+          <xs:selector xpath=".//dim_Dim_Gender" />
+          <xs:field xpath="gender_key" />
+        </xs:unique>
+        <xs:unique name="dim_Dim_Geography_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+          <xs:selector xpath=".//dim_Dim_Geography" />
+          <xs:field xpath="geography_key" />
+        </xs:unique>
+        <xs:unique name="dim_Dim_Indicator_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+          <xs:selector xpath=".//dim_Dim_Indicator" />
+          <xs:field xpath="indicator_key" />
+        </xs:unique>
+        <xs:unique name="dim_Dim_Source_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+          <xs:selector xpath=".//dim_Dim_Source" />
+          <xs:field xpath="source_key" />
+        </xs:unique>
+        <xs:unique name="dim_Dim_Time_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+          <xs:selector xpath=".//dim_Dim_Time" />
+          <xs:field xpath="time_key" />
+        </xs:unique>
+        <xs:keyref name="FK__Fact_Soci__geogr__245D67DE" refer="dim_Dim_Geography_Constraint1">
+          <xs:selector xpath=".//fact_Fact_SocialDevelopment" />
+          <xs:field xpath="geography_key" />
+        </xs:keyref>
+        <xs:keyref name="FK__Fact_Soci__time___25518C17" refer="dim_Dim_Time_Constraint1">
+          <xs:selector xpath=".//fact_Fact_SocialDevelopment" />
+          <xs:field xpath="time_key" />
+        </xs:keyref>
+        <xs:keyref name="FK__Fact_Soci__sourc__2739D489" refer="dim_Dim_Source_Constraint1">
+          <xs:selector xpath=".//fact_Fact_SocialDevelopment" />
+          <xs:field xpath="source_key" />
+        </xs:keyref>
+        <xs:keyref name="FK__Fact_Soci__indic__282DF8C2" refer="dim_Dim_Indicator_Constraint1">
+          <xs:selector xpath=".//fact_Fact_SocialDevelopment" />
+          <xs:field xpath="indicator_key" />
+        </xs:keyref>
+        <xs:keyref name="FK__Fact_Soci__econo__2645B050" refer="dim_Dim_Economic_Classification_Constraint1">
+          <xs:selector xpath=".//fact_Fact_SocialDevelopment" />
+          <xs:field xpath="economic_classification_key" />
+        </xs:keyref>
+        <xs:keyref name="FK__Fact_Ineq__geogr__1EA48E88" refer="dim_Dim_Geography_Constraint1">
+          <xs:selector xpath=".//fact_Fact_Inequality" />
+          <xs:field xpath="geography_key" />
+        </xs:keyref>
+        <xs:keyref name="FK__Fact_Ineq__time___1F98B2C1" refer="dim_Dim_Time_Constraint1">
+          <xs:selector xpath=".//fact_Fact_Inequality" />
+          <xs:field xpath="time_key" />
+        </xs:keyref>
+        <xs:keyref name="FK__Fact_Ineq__econo__208CD6FA" refer="dim_Dim_Economic_Classification_Constraint1">
+          <xs:selector xpath=".//fact_Fact_Inequality" />
+          <xs:field xpath="economic_classification_key" />
+        </xs:keyref>
+        <xs:keyref name="FK__Fact_Ineq__sourc__2180FB33" refer="dim_Dim_Source_Constraint1">
+          <xs:selector xpath=".//fact_Fact_Inequality" />
+          <xs:field xpath="source_key" />
+        </xs:keyref>
+        <xs:keyref name="FK__Fact_Ineq__indic__22751F6C" refer="dim_Dim_Indicator_Constraint1">
+          <xs:selector xpath=".//fact_Fact_Inequality" />
+          <xs:field xpath="indicator_key" />
+        </xs:keyref>
+        <xs:keyref name="FK__Fact_Econ__indic__1CBC4616" refer="dim_Dim_Indicator_Constraint1">
+          <xs:selector xpath=".//fact_Fact_Economy" />
+          <xs:field xpath="indicator_key" />
+        </xs:keyref>
+        <xs:keyref name="FK__Fact_Econ__time___18EBB532" refer="dim_Dim_Time_Constraint1">
+          <xs:selector xpath=".//fact_Fact_Economy" />
+          <xs:field xpath="time_key" />
+        </xs:keyref>
+        <xs:keyref name="FK__Fact_Econ__age_k__1AD3FDA4" refer="Constraint1">
+          <xs:selector xpath=".//fact_Fact_Economy" />
+          <xs:field xpath="age_key" />
+        </xs:keyref>
+        <xs:keyref name="FK__Fact_Econ__econo__1BC821DD" refer="dim_Dim_Economic_Classification_Constraint1">
+          <xs:selector xpath=".//fact_Fact_Economy" />
+          <xs:field xpath="economic_classification_key" />
+        </xs:keyref>
+        <xs:keyref name="FK__Fact_Econ__geogr__17F790F9" refer="dim_Dim_Geography_Constraint1">
+          <xs:selector xpath=".//fact_Fact_Economy" />
+          <xs:field xpath="geography_key" />
+        </xs:keyref>
+        <xs:keyref name="FK__Fact_Econ__gende__19DFD96B" refer="dim_Dim_Gender_Constraint1">
+          <xs:selector xpath=".//fact_Fact_Economy" />
+          <xs:field xpath="gender_key" />
+        </xs:keyref>
+      </xs:element>
+    </xs:schema>
+    <DW_x0020_Inequality xmlns="" />
+  </Schema>
+</DataSourceView>
