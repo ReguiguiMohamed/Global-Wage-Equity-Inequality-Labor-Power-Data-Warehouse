@@ -1,4 +1,4 @@
-﻿<Dimension xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ddl2="http://schemas.microsoft.com/analysisservices/2003/engine/2" xmlns:ddl2_2="http://schemas.microsoft.com/analysisservices/2003/engine/2/2" xmlns:ddl100_100="http://schemas.microsoft.com/analysisservices/2008/engine/100/100" xmlns:ddl200="http://schemas.microsoft.com/analysisservices/2010/engine/200" xmlns:ddl200_200="http://schemas.microsoft.com/analysisservices/2010/engine/200/200" xmlns:ddl300="http://schemas.microsoft.com/analysisservices/2011/engine/300" xmlns:ddl300_300="http://schemas.microsoft.com/analysisservices/2011/engine/300/300" xmlns:ddl400="http://schemas.microsoft.com/analysisservices/2012/engine/400" xmlns:ddl400_400="http://schemas.microsoft.com/analysisservices/2012/engine/400/400" xmlns:ddl500="http://schemas.microsoft.com/analysisservices/2013/engine/500" xmlns:ddl500_500="http://schemas.microsoft.com/analysisservices/2013/engine/500/500" xmlns:dwd="http://schemas.microsoft.com/DataWarehouse/Designer/1.0" dwd:design-time-name="83effeae-4188-4aa0-b88d-0239b2f52e88" xmlns="http://schemas.microsoft.com/analysisservices/2003/engine">
+﻿<Dimension xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ddl2="http://schemas.microsoft.com/analysisservices/2003/engine/2" xmlns:ddl2_2="http://schemas.microsoft.com/analysisservices/2003/engine/2/2" xmlns:ddl100_100="http://schemas.microsoft.com/analysisservices/2008/engine/100/100" xmlns:ddl200="http://schemas.microsoft.com/analysisservices/2010/engine/200" xmlns:ddl200_200="http://schemas.microsoft.com/analysisservices/2010/engine/200/200" xmlns:ddl300="http://schemas.microsoft.com/analysisservices/2011/engine/300" xmlns:ddl300_300="http://schemas.microsoft.com/analysisservices/2011/engine/300/300" xmlns:ddl400="http://schemas.microsoft.com/analysisservices/2012/engine/400" xmlns:ddl400_400="http://schemas.microsoft.com/analysisservices/2012/engine/400/400" xmlns:ddl500="http://schemas.microsoft.com/analysisservices/2013/engine/500" xmlns:ddl500_500="http://schemas.microsoft.com/analysisservices/2013/engine/500/500" xmlns:dwd="http://schemas.microsoft.com/DataWarehouse/Designer/1.0" dwd:design-time-name="34077b84-0ea1-436b-ae6c-7867af33d38b" xmlns="http://schemas.microsoft.com/analysisservices/2003/engine">
   <ID>Dim Geography</ID>
   <Name>Dim Geography</Name>
   <CreatedTimestamp>0001-01-01T00:00:00Z</CreatedTimestamp>
@@ -8,7 +8,7 @@
       <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramLayout</Name>
       <Value>
         <dds xmlns="">
-          <diagram fontclsid="{0BE35203-8F91-11CE-9DE3-00AA004BB851}" mouseiconclsid="{0BE35204-8F91-11CE-9DE3-00AA004BB851}" defaultlayout="MSDDS.Rectilinear" defaultlineroute="MSDDS.Rectilinear" version="7" nextobject="2" scale="100" pagebreakanchorx="0" pagebreakanchory="0" pagebreaksizex="0" pagebreaksizey="0" scrollleft="-1937" scrolltop="-5270" gridx="150" gridy="150" marginx="5000" marginy="5000" zoom="100" x="7281" y="14182" backcolor="2039583" defaultpersistence="2" PrintPageNumbersMode="3" PrintMarginTop="0" PrintMarginBottom="635" PrintMarginLeft="0" PrintMarginRight="0" marqueeselectionmode="0" mousepointer="0" snaptogrid="0" autotypeannotation="1" showscrollbars="0" viewpagebreaks="0" donotforceconnectorsbehindshapes="1" backpictureclsid="{00000000-0000-0000-0000-000000000000}">
+          <diagram fontclsid="{0BE35203-8F91-11CE-9DE3-00AA004BB851}" mouseiconclsid="{0BE35204-8F91-11CE-9DE3-00AA004BB851}" defaultlayout="MSDDS.Rectilinear" defaultlineroute="MSDDS.Rectilinear" version="7" nextobject="3" scale="100" pagebreakanchorx="0" pagebreakanchory="0" pagebreaksizex="0" pagebreaksizey="0" scrollleft="-1937" scrolltop="-5270" gridx="150" gridy="150" marginx="5000" marginy="5000" zoom="100" x="9144" y="15727" backcolor="2039583" defaultpersistence="2" PrintPageNumbersMode="3" PrintMarginTop="0" PrintMarginBottom="635" PrintMarginLeft="0" PrintMarginRight="0" marqueeselectionmode="0" mousepointer="0" snaptogrid="0" autotypeannotation="1" showscrollbars="0" viewpagebreaks="0" donotforceconnectorsbehindshapes="1" backpictureclsid="{00000000-0000-0000-0000-000000000000}">
             <font>
               <ddsxmlobjectstreamwrapper binary="010000009001b0300100065461686f6d61" />
             </font>
@@ -19,7 +19,7 @@
           <layoutmanager>
             <ddsxmlobj />
           </layoutmanager>
-          <ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge" tooltip="Dim_Geography" left="20" top="0" logicalid="1" controlid="1" masterid="0" hint1="0" hint2="0" width="3366" height="4826" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+          <ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge" tooltip="Dim_Geography" left="20" top="0" logicalid="2" controlid="1" masterid="0" hint1="0" hint2="0" width="3366" height="4826" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
             <control>
               <ddsxmlobjectstreaminitwrapper binary="000e0000260d0000da120000" />
             </control>
@@ -65,89 +65,121 @@
       <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramZoom</Name>
       <Value>100</Value>
     </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:ARDiagramLayout</Name>
+      <Value>
+        <DiagramLayout ZoomPercent="100" ViewPortX="0" ViewPortY="0" xmlns="">
+          <Shapes NodeWidth="162">
+            <Shape Id="Geography Key" Expanded="false">
+              <Attributes>
+                <Attribute Id="Geography Key" />
+                <Attribute Id="Gdp Per Capita" />
+                <Attribute Id="Income Group" />
+                <Attribute Id="Is Eu" />
+                <Attribute Id="Is g20" />
+                <Attribute Id="Is Oecd" />
+                <Attribute Id="Iso3" />
+                <Attribute Id="Population Latest" />
+              </Attributes>
+              <Position x="20" y="20" />
+            </Shape>
+            <Shape Id="Country Name" Expanded="false">
+              <Attributes>
+                <Attribute Id="Country Name" />
+              </Attributes>
+              <Position x="227" y="20" />
+            </Shape>
+            <Shape Id="Region" Expanded="false">
+              <Attributes>
+                <Attribute Id="Region" />
+              </Attributes>
+              <Position x="435" y="20" />
+            </Shape>
+            <Shape Id="Continent" Expanded="false">
+              <Attributes>
+                <Attribute Id="Continent" />
+              </Attributes>
+              <Position x="642" y="20" />
+            </Shape>
+          </Shapes>
+        </DiagramLayout>
+      </Value>
+    </Annotation>
   </Annotations>
   <LastProcessed>0001-01-01T00:00:00Z</LastProcessed>
   <State>Unprocessed</State>
-  <Source xsi:type="DataSourceViewBinding" dwd:design-time-name="3d1a8776-abc1-4dd6-bd65-c6dcf22da542">
+  <Source xsi:type="DataSourceViewBinding" dwd:design-time-name="1cd3efe0-ac3d-47c5-8304-5dfc8227347c">
     <DataSourceViewID>DW Inequality</DataSourceViewID>
   </Source>
   <UnknownMember>Visible</UnknownMember>
-  <ErrorConfiguration dwd:design-time-name="2206febe-48d8-4af8-9e86-e46c38f3cabc">
+  <ErrorConfiguration dwd:design-time-name="ce721bff-67e3-4637-b8d3-e519588aa4d4">
     <KeyNotFound>ReportAndStop</KeyNotFound>
     <KeyDuplicate>ReportAndStop</KeyDuplicate>
     <NullKeyNotAllowed>ReportAndStop</NullKeyNotAllowed>
   </ErrorConfiguration>
   <CurrentStorageMode>Molap</CurrentStorageMode>
   <Attributes>
-    <Attribute dwd:design-time-name="4d24526a-7ab7-4209-aa88-8956248d5100">
+    <Attribute dwd:design-time-name="4239222e-67e5-418c-b061-0b210113c7ac">
       <ID>Geography Key</ID>
       <Name>Geography Key</Name>
       <Usage>Key</Usage>
       <EstimatedCount>200</EstimatedCount>
       <KeyColumns>
-        <KeyColumn dwd:design-time-name="36419faa-4fd2-4351-8a5f-f4aa90ce9217">
+        <KeyColumn dwd:design-time-name="131eda6a-53b2-4586-9d5c-170f244f53f9">
           <DataType>Integer</DataType>
           <NullProcessing>UnknownMember</NullProcessing>
-          <Source xsi:type="ColumnBinding" dwd:design-time-name="7b4fc143-737b-4df2-aecf-448e1e7227ae">
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="051f58ac-c373-4a38-b0d3-5b1ff84630c2">
             <TableID>dim_Dim_Geography</TableID>
             <ColumnID>geography_key</ColumnID>
           </Source>
         </KeyColumn>
       </KeyColumns>
       <AttributeRelationships>
-        <AttributeRelationship dwd:design-time-name="09850bcf-6caa-44c8-93ed-df0b1f5cf302">
+        <AttributeRelationship dwd:design-time-name="5b9c4176-bd70-4370-853b-8ed8ab151f1c">
           <AttributeID>Iso3</AttributeID>
           <Name>Iso3</Name>
         </AttributeRelationship>
-        <AttributeRelationship dwd:design-time-name="7cfb9ea0-f610-4385-8f0c-37fff71f41d8">
-          <AttributeID>Country Name</AttributeID>
-          <Name>Country Name</Name>
-        </AttributeRelationship>
-        <AttributeRelationship dwd:design-time-name="5261a794-ad60-4ec7-96bb-68a2f0c7df64">
-          <AttributeID>Region</AttributeID>
-          <Name>Region</Name>
-        </AttributeRelationship>
-        <AttributeRelationship dwd:design-time-name="9c5db7d3-9c31-4d21-95d2-544e7cccf515">
-          <AttributeID>Continent</AttributeID>
-          <Name>Continent</Name>
-        </AttributeRelationship>
-        <AttributeRelationship dwd:design-time-name="b02038fb-0542-4be1-9dfd-599b79b2c222">
+        <AttributeRelationship dwd:design-time-name="5a4d5417-674d-45fb-a057-dadf06075973">
           <AttributeID>Income Group</AttributeID>
           <Name>Income Group</Name>
         </AttributeRelationship>
-        <AttributeRelationship dwd:design-time-name="f77c8d1e-9321-4810-a5dd-f92771ce071b">
+        <AttributeRelationship dwd:design-time-name="ee3bc348-0f9c-46c0-a887-d2aa1f87f5ed">
           <AttributeID>Population Latest</AttributeID>
           <Name>Population Latest</Name>
         </AttributeRelationship>
-        <AttributeRelationship dwd:design-time-name="815d02e5-5591-49ee-aab8-948fb2d41cc4">
+        <AttributeRelationship dwd:design-time-name="4655d174-f2a5-4d81-8b3c-a96047d10fde">
           <AttributeID>Gdp Per Capita</AttributeID>
           <Name>Gdp Per Capita</Name>
         </AttributeRelationship>
-        <AttributeRelationship dwd:design-time-name="ea56d665-860e-4cf8-9d3f-beb000623704">
+        <AttributeRelationship dwd:design-time-name="ad445dc2-bc94-4f39-ab58-dbf9d5b281aa">
           <AttributeID>Is Oecd</AttributeID>
           <Name>Is Oecd</Name>
         </AttributeRelationship>
-        <AttributeRelationship dwd:design-time-name="ad15f201-78bc-4d2c-8b5e-4f33876c129c">
+        <AttributeRelationship dwd:design-time-name="7932ae3c-9318-481e-996c-652c9f1d8fc3">
           <AttributeID>Is Eu</AttributeID>
           <Name>Is Eu</Name>
         </AttributeRelationship>
-        <AttributeRelationship dwd:design-time-name="76819815-3f30-4406-a76a-4488e5a86d43">
+        <AttributeRelationship dwd:design-time-name="92b384ae-3c8c-4982-a931-24d773845409">
           <AttributeID>Is g20</AttributeID>
           <Name>Is g20</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="28761c48-d1a6-4d09-9eb4-b722bc941654">
+          <AttributeID>Country Name</AttributeID>
+          <Name>Country Name</Name>
         </AttributeRelationship>
       </AttributeRelationships>
       <OrderBy>Key</OrderBy>
       <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
       <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
     </Attribute>
-    <Attribute dwd:design-time-name="85e26124-8f87-47b3-85c7-72b52c7a6db4">
+    <Attribute dwd:design-time-name="519d56bf-2f14-4063-86c3-4ed235de4ec5">
       <ID>Iso3</ID>
       <Name>Iso3</Name>
       <KeyColumns>
-        <KeyColumn dwd:design-time-name="f60bcc3d-2465-4cf6-b14a-339b87203a57">
+        <KeyColumn dwd:design-time-name="0184241b-6172-4ad7-bc5d-dab087a3ec1b">
           <DataType>WChar</DataType>
           <DataSize>3</DataSize>
-          <Source xsi:type="ColumnBinding" dwd:design-time-name="ee5402e0-8662-4134-91fe-52764418d4d3">
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="52ab3cca-934c-4f1f-908c-86e8e5eb6ea0">
             <TableID>dim_Dim_Geography</TableID>
             <ColumnID>iso3</ColumnID>
           </Source>
@@ -156,46 +188,58 @@
       <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
       <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
     </Attribute>
-    <Attribute dwd:design-time-name="5611c86f-2e3f-4cd8-9230-544bdaae8a9f">
+    <Attribute dwd:design-time-name="6b9ec5f3-d87c-410c-81f1-5369d31f1dba">
       <ID>Country Name</ID>
       <Name>Country Name</Name>
       <KeyColumns>
-        <KeyColumn dwd:design-time-name="0dc3ea17-078d-4287-9161-6ec7505f7d80">
+        <KeyColumn dwd:design-time-name="5932fd6d-80e6-47ed-83d1-3212c054a61c">
           <DataType>WChar</DataType>
           <DataSize>255</DataSize>
-          <Source xsi:type="ColumnBinding" dwd:design-time-name="68f85171-9563-4436-b264-3b47e57bd98d">
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="a4b43b2a-d0cc-4780-bd32-c54cd3e019d0">
             <TableID>dim_Dim_Geography</TableID>
             <ColumnID>country_name</ColumnID>
           </Source>
         </KeyColumn>
       </KeyColumns>
+      <AttributeRelationships>
+        <AttributeRelationship dwd:design-time-name="799c6e92-915e-4339-b07a-666256f0fac0">
+          <AttributeID>Region</AttributeID>
+          <Name>Region</Name>
+        </AttributeRelationship>
+      </AttributeRelationships>
       <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
       <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
     </Attribute>
-    <Attribute dwd:design-time-name="9ce8c6b3-26af-4065-991e-ba1659680443">
+    <Attribute dwd:design-time-name="6f1d43d0-ba12-465a-b433-c4aa0e8ca58b">
       <ID>Region</ID>
       <Name>Region</Name>
       <KeyColumns>
-        <KeyColumn dwd:design-time-name="4a50d9f1-4aab-4a57-b170-02f69ebc791b">
+        <KeyColumn dwd:design-time-name="0587a364-bb17-4c06-9932-50667de3fa71">
           <DataType>WChar</DataType>
           <DataSize>255</DataSize>
-          <Source xsi:type="ColumnBinding" dwd:design-time-name="f3a6b279-273a-4e33-b33a-cc0163981dc6">
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="0b069ddd-84d3-416c-a524-a5105a715556">
             <TableID>dim_Dim_Geography</TableID>
             <ColumnID>region</ColumnID>
           </Source>
         </KeyColumn>
       </KeyColumns>
+      <AttributeRelationships>
+        <AttributeRelationship dwd:design-time-name="cac2ade7-a885-48a5-9bac-c1f73b9c060d">
+          <AttributeID>Continent</AttributeID>
+          <Name>Continent</Name>
+        </AttributeRelationship>
+      </AttributeRelationships>
       <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
       <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
     </Attribute>
-    <Attribute dwd:design-time-name="379b91e7-3238-4cd7-af13-ab52bda6a02f">
+    <Attribute dwd:design-time-name="2cc0bfde-0121-44e3-8824-4377d5327283">
       <ID>Continent</ID>
       <Name>Continent</Name>
       <KeyColumns>
-        <KeyColumn dwd:design-time-name="59bf2f74-89be-4bb2-ab48-d7bb7699fb4f">
+        <KeyColumn dwd:design-time-name="ab1ae1a8-4528-4571-bc15-832c74f5cc3e">
           <DataType>WChar</DataType>
           <DataSize>255</DataSize>
-          <Source xsi:type="ColumnBinding" dwd:design-time-name="73efb0c8-784c-46a6-8c0e-79451d7e1b75">
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="c7b81b94-b3f2-460f-a594-a84701b08a8a">
             <TableID>dim_Dim_Geography</TableID>
             <ColumnID>continent</ColumnID>
           </Source>
@@ -204,14 +248,14 @@
       <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
       <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
     </Attribute>
-    <Attribute dwd:design-time-name="0403660e-884b-4e80-b70b-0c44e78eed23">
+    <Attribute dwd:design-time-name="b7a84ae4-7b3d-4ea6-8365-f32b13ff9922">
       <ID>Income Group</ID>
       <Name>Income Group</Name>
       <KeyColumns>
-        <KeyColumn dwd:design-time-name="8d4a12a4-6f53-451a-a285-ed5135849100">
+        <KeyColumn dwd:design-time-name="0ff4fa55-84ac-4b83-afff-3a6bdea3c6b9">
           <DataType>WChar</DataType>
           <DataSize>255</DataSize>
-          <Source xsi:type="ColumnBinding" dwd:design-time-name="933c1399-bf59-409d-b3d0-6bebf7dd3c73">
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="068b1c5e-ea4c-402b-a797-796a3f24da9a">
             <TableID>dim_Dim_Geography</TableID>
             <ColumnID>income_group</ColumnID>
           </Source>
@@ -220,13 +264,13 @@
       <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
       <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
     </Attribute>
-    <Attribute dwd:design-time-name="ad405133-f9fe-493a-a79b-725fca96c67c">
+    <Attribute dwd:design-time-name="40635aa5-a8c3-4e06-a792-ac4f6c1a973e">
       <ID>Population Latest</ID>
       <Name>Population Latest</Name>
       <KeyColumns>
-        <KeyColumn dwd:design-time-name="2c7fba00-7bc1-439a-810c-dfb5050629a7">
+        <KeyColumn dwd:design-time-name="33be9d1b-0c27-424d-8d3d-10629731077a">
           <DataType>Double</DataType>
-          <Source xsi:type="ColumnBinding" dwd:design-time-name="2fc0e465-d59d-43b5-954e-c6c593eccb3a">
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="ee8b0e42-738c-4e26-9f65-9226e2a551e8">
             <TableID>dim_Dim_Geography</TableID>
             <ColumnID>population_latest</ColumnID>
           </Source>
@@ -235,13 +279,13 @@
       <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
       <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
     </Attribute>
-    <Attribute dwd:design-time-name="d9b4c925-2bb8-48ee-b1d2-9f0efc46b361">
+    <Attribute dwd:design-time-name="eb1612a9-158f-4ea5-83e9-579ff011b030">
       <ID>Gdp Per Capita</ID>
       <Name>Gdp Per Capita</Name>
       <KeyColumns>
-        <KeyColumn dwd:design-time-name="35d5d525-6eef-41f1-862d-c465c21dc93c">
+        <KeyColumn dwd:design-time-name="cf9a3fa2-12fc-4717-a479-7e3a105285ac">
           <DataType>Double</DataType>
-          <Source xsi:type="ColumnBinding" dwd:design-time-name="180997db-ddb9-4050-9388-5f85a071671d">
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="6dea6fa6-d60e-4691-94c7-f232f5c22de9">
             <TableID>dim_Dim_Geography</TableID>
             <ColumnID>gdp_per_capita</ColumnID>
           </Source>
@@ -250,13 +294,13 @@
       <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
       <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
     </Attribute>
-    <Attribute dwd:design-time-name="10eaed05-58cc-426b-af36-59a2cfbff99a">
+    <Attribute dwd:design-time-name="6c2517ca-5516-4a53-9336-dc52abfbda83">
       <ID>Is Oecd</ID>
       <Name>Is Oecd</Name>
       <KeyColumns>
-        <KeyColumn dwd:design-time-name="ee6f8dc9-1bde-4f87-a62c-e76b9f7bb88d">
+        <KeyColumn dwd:design-time-name="a66d8709-8ddc-473f-8499-13e167ec5e85">
           <DataType>Boolean</DataType>
-          <Source xsi:type="ColumnBinding" dwd:design-time-name="0bf62e60-19b9-45c8-a71f-81ae96614d1c">
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="cc10c7d8-21fd-4fed-8ab4-0216b622e74d">
             <TableID>dim_Dim_Geography</TableID>
             <ColumnID>is_oecd</ColumnID>
           </Source>
@@ -265,13 +309,13 @@
       <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
       <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
     </Attribute>
-    <Attribute dwd:design-time-name="b337d88b-b971-460a-9052-f949d1d2afe5">
+    <Attribute dwd:design-time-name="6e7722da-1e2f-4a4e-b786-1d7c31820b81">
       <ID>Is Eu</ID>
       <Name>Is Eu</Name>
       <KeyColumns>
-        <KeyColumn dwd:design-time-name="2244997a-fe84-4d32-94c8-a0107a66a717">
+        <KeyColumn dwd:design-time-name="2652581e-4c35-4a56-8d0e-5f9faac207c6">
           <DataType>Boolean</DataType>
-          <Source xsi:type="ColumnBinding" dwd:design-time-name="183b35a7-1836-452c-b9a2-bbb1e4bc38cd">
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="948ce9eb-2646-472a-b5c7-5f7f97b7b0c3">
             <TableID>dim_Dim_Geography</TableID>
             <ColumnID>is_eu</ColumnID>
           </Source>
@@ -280,13 +324,13 @@
       <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
       <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
     </Attribute>
-    <Attribute dwd:design-time-name="df035530-4885-49d1-9f78-f0f1fe405bb1">
+    <Attribute dwd:design-time-name="d7d973ba-0da6-4b4c-b65a-d7748ea458a8">
       <ID>Is g20</ID>
       <Name>Is g20</Name>
       <KeyColumns>
-        <KeyColumn dwd:design-time-name="664b4d0d-931e-4351-8484-a7c44483877f">
+        <KeyColumn dwd:design-time-name="28555fdd-81ad-47ab-9e82-c7a67959f88c">
           <DataType>Boolean</DataType>
-          <Source xsi:type="ColumnBinding" dwd:design-time-name="71b0e996-b85a-4abf-919d-7654e4e261b9">
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="d4c26976-1a97-4454-9097-1ab8b4be8b9c">
             <TableID>dim_Dim_Geography</TableID>
             <ColumnID>is_g20</ColumnID>
           </Source>
@@ -296,5 +340,28 @@
       <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
     </Attribute>
   </Attributes>
+  <Hierarchies>
+    <Hierarchy dwd:design-time-name="0ffa0f84-2982-41c6-93a6-e043b1eb54ff">
+      <ID>Hierarchy</ID>
+      <Name>Geography Hierarchy</Name>
+      <Levels>
+        <Level dwd:design-time-name="486adf2e-22a9-445b-ae27-e55102dfa2ba">
+          <ID>Country Name</ID>
+          <Name>Country Name</Name>
+          <SourceAttributeID>Country Name</SourceAttributeID>
+        </Level>
+        <Level dwd:design-time-name="d3daf470-58c7-43aa-baff-78318f660540">
+          <ID>Region</ID>
+          <Name>Region</Name>
+          <SourceAttributeID>Region</SourceAttributeID>
+        </Level>
+        <Level dwd:design-time-name="09b452a7-2daa-427c-8722-b22767f995c5">
+          <ID>Continent</ID>
+          <Name>Continent</Name>
+          <SourceAttributeID>Continent</SourceAttributeID>
+        </Level>
+      </Levels>
+    </Hierarchy>
+  </Hierarchies>
   <ddl300:ProcessingState>Unprocessed</ddl300:ProcessingState>
 </Dimension>
