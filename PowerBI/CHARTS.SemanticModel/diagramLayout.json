@@ -1,0 +1,154 @@
+{
+  "version": "1.1.0",
+  "diagrams": [
+    {
+      "ordinal": 0,
+      "scrollPosition": {
+        "x": 0,
+        "y": 186.11411026589758
+      },
+      "nodes": [
+        {
+          "location": {
+            "x": 284.578724854629,
+            "y": 328.69391400227835
+          },
+          "nodeIndex": "Fact Economy",
+          "size": {
+            "height": 104,
+            "width": 234
+          },
+          "zIndex": 1
+        },
+        {
+          "location": {
+            "x": 826.43446764652572,
+            "y": 1013.92542662806
+          },
+          "nodeIndex": "Fact Inequality",
+          "size": {
+            "height": 104,
+            "width": 234
+          },
+          "zIndex": 2
+        },
+        {
+          "location": {
+            "x": 640.97913862869268,
+            "y": 428.959796060727
+          },
+          "nodeIndex": "Fact Social Development",
+          "size": {
+            "height": 104,
+            "width": 234
+          },
+          "zIndex": 3
+        },
+        {
+          "location": {
+            "x": 0,
+            "y": 66.53149553599664
+          },
+          "nodeIndex": "Dim Age",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 4
+        },
+        {
+          "location": {
+            "x": 1028.4994389275244,
+            "y": -50
+          },
+          "nodeIndex": "Dim Economic Classification",
+          "size": {
+            "height": 296,
+            "width": 234
+          },
+          "zIndex": 5
+        },
+        {
+          "location": {
+            "x": 0,
+            "y": 546.52385381130182
+          },
+          "nodeIndex": "Dim Gender",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 6
+        },
+        {
+          "location": {
+            "x": 1010.0760613424881,
+            "y": 611.96753242779869
+          },
+          "nodeIndex": "Dim Geography",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 7
+        },
+        {
+          "location": {
+            "x": 386.64776905417159,
+            "y": 538.96840306240165
+          },
+          "nodeIndex": "Dim Indicator",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 8
+        },
+        {
+          "location": {
+            "x": 1289.7564731424141,
+            "y": 983.775615245311
+          },
+          "nodeIndex": "Dim Source",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 9
+        },
+        {
+          "location": {
+            "x": 50,
+            "y": 990.18385834703292
+          },
+          "nodeIndex": "Dim Time",
+          "size": {
+            "height": 296,
+            "width": 234
+          },
+          "zIndex": 10
+        },
+        {
+          "location": {
+            "x": 2056.3264191003991,
+            "y": 515.31237081482129
+          },
+          "nodeIndex": "Measures",
+          "size": {
+            "height": 104,
+            "width": 234
+          },
+          "zIndex": 11
+        }
+      ],
+      "name": "All tables",
+      "zoomValue": 53.300631965258894,
+      "pinKeyFieldsToTop": false,
+      "showExtraHeaderInfo": false,
+      "hideKeyFieldsWhenCollapsed": false,
+      "tablesLocked": false
+    }
+  ],
+  "selectedDiagram": "All tables",
+  "defaultDiagram": "All tables"
+}
