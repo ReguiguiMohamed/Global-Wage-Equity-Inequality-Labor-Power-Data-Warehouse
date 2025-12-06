@@ -1,0 +1,187 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "0ca6846262041a7b8963",
+  "position": {
+    "x": 37.049866831940236,
+    "y": 94.682993014958384,
+    "z": 0,
+    "height": 528.30365667766637,
+    "width": 1110.1237876681353,
+    "tabOrder": 0
+  },
+  "visual": {
+    "visualType": "powerKPI462CE5C2666F4EC8A8BDD7E5587320A3",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fact Social Development"
+                    }
+                  },
+                  "Property": "___Education Progress Literacy Rate Value"
+                }
+              },
+              "queryRef": "Fact Social Development.___Education Progress Literacy Rate Value",
+              "nativeQueryRef": "Education Progress Literacy Rate"
+            }
+          ]
+        },
+        "Axis": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Dim Time"
+                    }
+                  },
+                  "Property": "Year"
+                }
+              },
+              "queryRef": "Dim Time.Year",
+              "nativeQueryRef": "Year"
+            }
+          ]
+        },
+        "SeriesColumn": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Dim Geography"
+                    }
+                  },
+                  "Property": "Continent"
+                }
+              },
+              "queryRef": "Dim Geography.Continent",
+              "nativeQueryRef": "Continent"
+            }
+          ]
+        }
+      }
+    },
+    "objects": {
+      "legend": [
+        {
+          "properties": {
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "21D"
+                }
+              }
+            },
+            "labelColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 1,
+                      "Percent": 0
+                    }
+                  }
+                }
+              }
+            },
+            "titleText": {
+              "expr": {
+                "Literal": {
+                  "Value": "''"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "yAxis": [
+        {
+          "properties": {
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "10D"
+                }
+              }
+            },
+            "precision": {
+              "expr": {
+                "Literal": {
+                  "Value": "0D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "xAxis": [
+        {
+          "properties": {
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "15D"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "388b23eb61133476d1c6",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Fact Social Development"
+              }
+            },
+            "Property": "___Education Progress Literacy Rate Value"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "84948c05c29644cdd060",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Dim Time"
+              }
+            },
+            "Property": "Year"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "88feabeea60a6529c5dd",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Dim Geography"
+              }
+            },
+            "Property": "Continent"
+          }
+        },
+        "type": "Categorical"
+      }
+    ]
+  }
+}

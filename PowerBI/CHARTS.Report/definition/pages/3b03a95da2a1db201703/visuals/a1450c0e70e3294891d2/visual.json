@@ -2,11 +2,11 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
   "name": "a1450c0e70e3294891d2",
   "position": {
-    "x": 0,
-    "y": 0,
+    "x": 23.891166732428676,
+    "y": 30.917980477260638,
     "z": 0,
-    "height": 688,
-    "width": 1233,
+    "height": 688.62774699353236,
+    "width": 1232.5031308435264,
     "tabOrder": 0
   },
   "visual": {
@@ -348,6 +348,20 @@
             }
           ]
         }
+      },
+      {
+        "name": "69351905558a445e6ce8",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Measures"
+              }
+            },
+            "Property": "Weighted Gini"
+          }
+        },
+        "type": "Advanced"
       }
     ]
   }

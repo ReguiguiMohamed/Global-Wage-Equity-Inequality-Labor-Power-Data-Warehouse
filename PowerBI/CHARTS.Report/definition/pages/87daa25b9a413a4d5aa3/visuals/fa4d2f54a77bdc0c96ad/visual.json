@@ -2,35 +2,17 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
   "name": "fa4d2f54a77bdc0c96ad",
   "position": {
-    "x": 10,
+    "x": 9.6055210305030236,
     "y": 0,
     "z": 0,
-    "height": 720,
-    "width": 1230,
+    "height": 720.41407728772685,
+    "width": 1230.8789091944589,
     "tabOrder": 0
   },
   "visual": {
     "visualType": "esriVisual",
     "query": {
       "queryState": {
-        "Color": {
-          "projections": [
-            {
-              "field": {
-                "Measure": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "Measures"
-                    }
-                  },
-                  "Property": "Weighted Gini"
-                }
-              },
-              "queryRef": "Measures.Weighted Gini",
-              "nativeQueryRef": "Weighted Gini"
-            }
-          ]
-        },
         "Location": {
           "projections": [
             {
@@ -46,6 +28,24 @@
               },
               "queryRef": "Dim Geography.Country Name",
               "nativeQueryRef": "Country Name"
+            }
+          ]
+        },
+        "Size": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Measures"
+                    }
+                  },
+                  "Property": "Weighted Gini"
+                }
+              },
+              "queryRef": "Measures.Weighted Gini",
+              "nativeQueryRef": "Weighted Gini"
             }
           ]
         }
@@ -79,6 +79,13 @@
                   "Value": "''"
                 }
               }
+            },
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
             }
           }
         }
@@ -89,7 +96,7 @@
             "value": {
               "expr": {
                 "Literal": {
-                  "Value": "'{\"portalUrl\":\"https://www.arcgis.com\",\"version\":\"2.4\",\"isAuthorNamedUser\":false,\"map\":{\"webmap\":{\"is3d\":false,\"itemData\":{\"operationalLayers\":[{\"id\":\"MyLayer\",\"visibility\":true,\"opacity\":1,\"minScale\":0,\"maxScale\":0,\"refreshInterval\":0,\"title\":\"Country Name\",\"objectIdField\":\"objectId\",\"type\":\"DataLayer\",\"layerType\":\"ArcGISFeatureLayer\",\"popupEnabled\":true,\"disablePopup\":false,\"visible\":true,\"geometryType\":\"polygon\",\"source\":[{\"attributes\":{},\"geometry\":{\"rings\":[],\"type\":\"polygon\",\"spatialReference\":{\"latestWkid\":3857,\"wkid\":102100}}}],\"spatialReference\":{\"latestWkid\":3857,\"wkid\":102100},\"esriMaps\":{\"isTimeEnabled\":\"false\",\"clusterInfo\":null,\"lastShareInfo\":null},\"timeInfo\":null,\"showLabels\":true,\"featureCollection\":{\"layers\":[{\"popupInfo\":{\"popupElements\":[{\"type\":\"fields\",\"fieldInfos\":[{\"fieldName\":\"Dim_20Geography_Country_20Name\",\"isEditable\":true,\"label\":\"Country Name\",\"tooltip\":\"\",\"visible\":true},{\"fieldName\":\"Measures_Weighted_20Gini\",\"format\":{\"digitSeparator\":true,\"places\":2},\"isEditable\":true,\"label\":\"Weighted Gini\",\"tooltip\":\"\",\"visible\":true},{\"fieldName\":\"ROW_ID\",\"format\":{\"digitSeparator\":true,\"places\":0},\"isEditable\":true,\"label\":\"ROW_ID\",\"tooltip\":\"\",\"visible\":true}]}],\"expressionInfos\":[],\"fieldInfos\":[{\"fieldName\":\"Dim_20Geography_Country_20Name\",\"isEditable\":true,\"label\":\"Country Name\",\"tooltip\":\"\",\"visible\":true},{\"fieldName\":\"Measures_Weighted_20Gini\",\"format\":{\"digitSeparator\":true,\"places\":2},\"isEditable\":true,\"label\":\"Weighted Gini\",\"tooltip\":\"\",\"visible\":true},{\"fieldName\":\"ROW_ID\",\"format\":{\"digitSeparator\":true,\"places\":0},\"isEditable\":true,\"label\":\"ROW_ID\",\"tooltip\":\"\",\"visible\":true}],\"title\":\"\",\"actions\":[]},\"effect\":null,\"layerDefinition\":{\"objectIdField\":\"objectId\",\"fields\":[{\"alias\":\"objectId\",\"editable\":false,\"name\":\"objectId\",\"nullable\":false,\"type\":\"esriFieldTypeOID\"},{\"alias\":\"Country Name\",\"editable\":true,\"length\":-1,\"name\":\"Dim_20Geography_Country_20Name\",\"nullable\":true,\"type\":\"esriFieldTypeString\"},{\"alias\":\"Weighted Gini\",\"editable\":true,\"name\":\"Measures_Weighted_20Gini\",\"nullable\":true,\"type\":\"esriFieldTypeDouble\"},{\"alias\":\"ROW_ID\",\"editable\":true,\"name\":\"ROW_ID\",\"nullable\":true,\"type\":\"esriFieldTypeInteger\"}],\"geometryType\":\"polygon\",\"drawingInfo\":{\"renderer\":{\"authoringInfo\":{\"classificationMethod\":\"esriClassifyNaturalBreaks\",\"type\":\"classedColor\"},\"type\":\"classBreaks\",\"visualVariables\":[],\"classBreakInfos\":[{\"classMaxValue\":30.463732,\"symbol\":{\"type\":\"esriSFS\",\"color\":[230,69,171,255],\"outline\":{\"type\":\"esriSLS\",\"color\":[255,255,255,204],\"width\":1,\"style\":\"esriSLSSolid\"},\"style\":\"esriSFSSolid\"}},{\"classMaxValue\":37.525631,\"symbol\":{\"type\":\"esriSFS\",\"color\":[128,120,118,255],\"outline\":{\"type\":\"esriSLS\",\"color\":[255,255,255,204],\"width\":1,\"style\":\"esriSLSSolid\"},\"style\":\"esriSFSSolid\"}},{\"classMaxValue\":45.086636,\"symbol\":{\"type\":\"esriSFS\",\"color\":[26,171,64,255],\"outline\":{\"type\":\"esriSLS\",\"color\":[255,255,255,204],\"width\":1,\"style\":\"esriSLSSolid\"},\"style\":\"esriSFSSolid\"}},{\"classMaxValue\":53.448574,\"symbol\":{\"type\":\"esriSFS\",\"color\":[50,108,91,255],\"outline\":{\"type\":\"esriSLS\",\"color\":[255,255,255,204],\"width\":1,\"style\":\"esriSLSSolid\"},\"style\":\"esriSFSSolid\"}},{\"classMaxValue\":66.91863250732422,\"symbol\":{\"type\":\"esriSFS\",\"color\":[74,45,117,255],\"outline\":{\"type\":\"esriSLS\",\"color\":[255,255,255,204],\"width\":1,\"style\":\"esriSLSSolid\"},\"style\":\"esriSFSSolid\"}}],\"defaultLabel\":\"Other\",\"defaultSymbol\":{\"type\":\"esriSFS\",\"color\":[170,170,170,255],\"outline\":{\"type\":\"esriSLS\",\"color\":[153,153,153,64],\"width\":0.375,\"style\":\"esriSLSSolid\"},\"style\":\"esriSFSSolid\"},\"field\":\"Measures_Weighted_20Gini\",\"minValue\":19.21099090576172},\"transparency\":0},\"featureReduction\":null,\"locationProvider\":{\"type\":\"cachedstdgeo\",\"adminLevel\":\"countries\",\"targetSR\":{\"latestWkid\":3857,\"wkid\":102100},\"useExactMatch\":false,\"sourceCountry\":\"world\",\"geographyLevel\":\"countries\",\"lookupFields\":[{\"lookupField\":\"Location\",\"outField\":\"Dim_20Geography_Country_20Name\"}]},\"minScale\":0,\"maxScale\":0,\"definitionExpression\":null,\"templates\":[{\"name\":\"New Feature\",\"description\":\"\",\"prototype\":{\"attributes\":{\"Dim_20Geography_Country_20Name\":null,\"Measures_Weighted_20Gini\":null,\"ROW_ID\":null}}}],\"elevationInfo\":null,\"name\":\"Country Name\",\"type\":\"DataLayer\",\"queryParameters\":{\"tableId\":\"\"}},\"featureSet\":{\"features\":[{\"attributes\":{},\"geometry\":{\"rings\":[],\"type\":\"polygon\",\"spatialReference\":{\"latestWkid\":3857,\"wkid\":102100}}}]}}]}}],\"tables\":[],\"baseMap\":{\"baseMapLayers\":[{\"id\":\"VectorTile_1970\",\"opacity\":1,\"title\":\"Light Gray Base\",\"visibility\":true,\"layerType\":\"VectorTileLayer\",\"styleUrl\":\"https://cdn.arcgis.com/sharing/rest/content/items/291da5eab3a0412593b66d384379f89f/resources/styles/root.json\"},{\"id\":\"VectorTile_7117\",\"opacity\":1,\"title\":\"Light Gray Reference\",\"visibility\":true,\"layerType\":\"VectorTileLayer\",\"styleUrl\":\"https://cdn.arcgis.com/sharing/rest/content/items/1768e8369a214dfab4e2167d5c5f2454/resources/styles/root.json\",\"isReference\":true}],\"title\":\"Light Gray Canvas\"},\"version\":\"2.26\",\"authoringApp\":\"ArcGIS for Power BI\",\"bookmarks\":[],\"initialState\":{\"viewpoint\":{\"targetGeometry\":{\"spatialReference\":{\"latestWkid\":3857,\"wkid\":102100},\"xmin\":-26207256.35564383,\"ymin\":-8126249.000015882,\"xmax\":21538368.99239613,\"ymax\":18916560.1110461}}}}},\"webmapExtensions\":{\"format\":2}},\"embedCheckPassed\":false}'"
+                  "Value": "'{\"portalUrl\":\"https://www.arcgis.com\",\"version\":\"2.4\",\"isAuthorNamedUser\":false,\"map\":{\"webmap\":{\"is3d\":false,\"itemData\":{\"operationalLayers\":[{\"id\":\"MyLayer\",\"visibility\":true,\"opacity\":1,\"minScale\":0,\"maxScale\":0,\"refreshInterval\":0,\"title\":\"Country Name\",\"objectIdField\":\"objectId\",\"type\":\"DataLayer\",\"layerType\":\"ArcGISFeatureLayer\",\"popupEnabled\":true,\"disablePopup\":false,\"visible\":true,\"geometryType\":\"polygon\",\"source\":[{\"attributes\":{},\"geometry\":{\"rings\":[],\"type\":\"polygon\",\"spatialReference\":{\"latestWkid\":3857,\"wkid\":102100}}}],\"spatialReference\":{\"latestWkid\":3857,\"wkid\":102100},\"esriMaps\":{\"isTimeEnabled\":\"false\",\"clusterInfo\":null,\"lastShareInfo\":null},\"timeInfo\":null,\"showLabels\":true,\"featureCollection\":{\"layers\":[{\"popupInfo\":{\"popupElements\":[{\"type\":\"fields\",\"fieldInfos\":[{\"fieldName\":\"Dim_20Geography_Country_20Name\",\"isEditable\":true,\"label\":\"Country Name\",\"tooltip\":\"\",\"visible\":true},{\"fieldName\":\"Measures_Weighted_20Gini\",\"format\":{\"digitSeparator\":true,\"places\":2},\"isEditable\":true,\"label\":\"Weighted Gini\",\"tooltip\":\"\",\"visible\":true},{\"fieldName\":\"ROW_ID\",\"format\":{\"digitSeparator\":true,\"places\":0},\"isEditable\":true,\"label\":\"ROW_ID\",\"tooltip\":\"\",\"visible\":true}]}],\"expressionInfos\":[],\"fieldInfos\":[{\"fieldName\":\"Dim_20Geography_Country_20Name\",\"isEditable\":true,\"label\":\"Country Name\",\"tooltip\":\"\",\"visible\":true},{\"fieldName\":\"Measures_Weighted_20Gini\",\"format\":{\"digitSeparator\":true,\"places\":2},\"isEditable\":true,\"label\":\"Weighted Gini\",\"tooltip\":\"\",\"visible\":true},{\"fieldName\":\"ROW_ID\",\"format\":{\"digitSeparator\":true,\"places\":0},\"isEditable\":true,\"label\":\"ROW_ID\",\"tooltip\":\"\",\"visible\":true}],\"title\":\"\",\"actions\":[]},\"effect\":null,\"layerDefinition\":{\"objectIdField\":\"objectId\",\"fields\":[{\"alias\":\"objectId\",\"editable\":false,\"name\":\"objectId\",\"nullable\":false,\"type\":\"esriFieldTypeOID\"},{\"alias\":\"Country Name\",\"editable\":true,\"length\":-1,\"name\":\"Dim_20Geography_Country_20Name\",\"nullable\":true,\"type\":\"esriFieldTypeString\"},{\"alias\":\"Weighted Gini\",\"editable\":true,\"name\":\"Measures_Weighted_20Gini\",\"nullable\":true,\"type\":\"esriFieldTypeDouble\"},{\"alias\":\"ROW_ID\",\"editable\":true,\"name\":\"ROW_ID\",\"nullable\":true,\"type\":\"esriFieldTypeInteger\"}],\"geometryType\":\"polygon\",\"drawingInfo\":{\"renderer\":{\"authoringInfo\":{\"classificationMethod\":\"esriClassifyNaturalBreaks\",\"type\":\"classedColor\"},\"type\":\"classBreaks\",\"visualVariables\":[],\"classBreakInfos\":[{\"classMaxValue\":30.463732,\"symbol\":{\"type\":\"esriSFS\",\"color\":[255,239,220,255],\"outline\":{\"type\":\"esriSLS\",\"color\":[255,255,255,204],\"width\":1,\"style\":\"esriSLSSolid\"},\"style\":\"esriSFSSolid\"}},{\"classMaxValue\":37.525631,\"symbol\":{\"type\":\"esriSFS\",\"color\":[245,197,171,255],\"outline\":{\"type\":\"esriSLS\",\"color\":[255,255,255,204],\"width\":1,\"style\":\"esriSLSSolid\"},\"style\":\"esriSFSSolid\"}},{\"classMaxValue\":45.086636,\"symbol\":{\"type\":\"esriSFS\",\"color\":[209,94,61,255],\"outline\":{\"type\":\"esriSLS\",\"color\":[255,255,255,204],\"width\":1,\"style\":\"esriSLSSolid\"},\"style\":\"esriSFSSolid\"}},{\"classMaxValue\":53.448574,\"symbol\":{\"type\":\"esriSFS\",\"color\":[177,57,37,255],\"outline\":{\"type\":\"esriSLS\",\"color\":[255,255,255,204],\"width\":1,\"style\":\"esriSLSSolid\"},\"style\":\"esriSFSSolid\"}},{\"classMaxValue\":66.91863250732422,\"symbol\":{\"type\":\"esriSFS\",\"color\":[102,2,2,255],\"outline\":{\"type\":\"esriSLS\",\"color\":[255,255,255,204],\"width\":1,\"style\":\"esriSLSSolid\"},\"style\":\"esriSFSSolid\"}}],\"defaultLabel\":\"Other\",\"defaultSymbol\":{\"type\":\"esriSFS\",\"color\":[170,170,170,255],\"outline\":{\"type\":\"esriSLS\",\"color\":[153,153,153,64],\"width\":0.375,\"style\":\"esriSLSSolid\"},\"style\":\"esriSFSSolid\"},\"field\":\"Measures_Weighted_20Gini\",\"minValue\":19.21099090576172},\"transparency\":0},\"featureReduction\":null,\"locationProvider\":{\"type\":\"cachedstdgeo\",\"adminLevel\":\"countries\",\"targetSR\":{\"latestWkid\":3857,\"wkid\":102100},\"useExactMatch\":false,\"sourceCountry\":\"world\",\"geographyLevel\":\"countries\",\"lookupFields\":[{\"lookupField\":\"Location\",\"outField\":\"Dim_20Geography_Country_20Name\"}]},\"minScale\":0,\"maxScale\":0,\"definitionExpression\":null,\"templates\":[{\"name\":\"New Feature\",\"description\":\"\",\"prototype\":{\"attributes\":{\"Dim_20Geography_Country_20Name\":null,\"Measures_Weighted_20Gini\":null,\"ROW_ID\":null}}}],\"elevationInfo\":null,\"name\":\"Country Name\",\"type\":\"DataLayer\",\"queryParameters\":{\"tableId\":\"\"}},\"featureSet\":{\"features\":[{\"attributes\":{},\"geometry\":{\"rings\":[],\"type\":\"polygon\",\"spatialReference\":{\"latestWkid\":3857,\"wkid\":102100}}}]}}]}}],\"tables\":[],\"baseMap\":{\"baseMapLayers\":[{\"id\":\"VectorTile_1970\",\"opacity\":1,\"title\":\"Light Gray Base\",\"visibility\":true,\"layerType\":\"VectorTileLayer\",\"styleUrl\":\"https://cdn.arcgis.com/sharing/rest/content/items/291da5eab3a0412593b66d384379f89f/resources/styles/root.json\"},{\"id\":\"VectorTile_7117\",\"opacity\":1,\"title\":\"Light Gray Reference\",\"visibility\":true,\"layerType\":\"VectorTileLayer\",\"styleUrl\":\"https://cdn.arcgis.com/sharing/rest/content/items/1768e8369a214dfab4e2167d5c5f2454/resources/styles/root.json\",\"isReference\":true}],\"title\":\"Light Gray Canvas\"},\"version\":\"2.26\",\"authoringApp\":\"ArcGIS for Power BI\",\"bookmarks\":[],\"initialState\":{\"viewpoint\":{\"targetGeometry\":{\"spatialReference\":{\"latestWkid\":3857,\"wkid\":102100},\"xmin\":-63415063.91082255,\"ymin\":-9106660.592727203,\"xmax\":-15630302.804300584,\"ymax\":17662198.208960775}}}}},\"webmapExtensions\":{\"format\":2}},\"embedCheckPassed\":false}'"
                 }
               }
             }
@@ -115,7 +122,7 @@
             "enable": {
               "expr": {
                 "Literal": {
-                  "Value": "true"
+                  "Value": "false"
                 }
               }
             }
@@ -159,8 +166,74 @@
             }
           }
         }
+      ],
+      "title": [
+        {
+          "properties": {
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Weighted Gini by Country'"
+                }
+              }
+            },
+            "alignment": {
+              "expr": {
+                "Literal": {
+                  "Value": "'center'"
+                }
+              }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "19D"
+                }
+              }
+            },
+            "bold": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
       ]
     },
     "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "4c3d92aaa78a7072ec6b",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Dim Geography"
+              }
+            },
+            "Property": "Country Name"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "ab1de6eb5797d32a785a",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Measures"
+              }
+            },
+            "Property": "Weighted Gini"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
   }
 }

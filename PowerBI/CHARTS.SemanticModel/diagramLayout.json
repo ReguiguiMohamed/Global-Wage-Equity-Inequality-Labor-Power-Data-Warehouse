@@ -4,129 +4,139 @@
     {
       "ordinal": 0,
       "scrollPosition": {
-        "x": 0,
-        "y": 186.11411026589758
+        "x": 92.5714329310826,
+        "y": 205.71428571428572
       },
       "nodes": [
         {
           "location": {
-            "x": 284.578724854629,
-            "y": 328.69391400227835
+            "x": 447.80380641971476,
+            "y": 715.18088874259638
           },
           "nodeIndex": "Fact Economy",
           "size": {
-            "height": 104,
+            "height": 72,
             "width": 234
           },
-          "zIndex": 1
+          "zIndex": 1,
+          "expandedHeight": 104
         },
         {
           "location": {
-            "x": 826.43446764652572,
-            "y": 1013.92542662806
+            "x": 573.15416866622013,
+            "y": 279.22493309777934
           },
           "nodeIndex": "Fact Inequality",
           "size": {
-            "height": 104,
+            "height": 72,
             "width": 234
           },
-          "zIndex": 2
+          "zIndex": 2,
+          "expandedHeight": 104
         },
         {
           "location": {
-            "x": 640.97913862869268,
-            "y": 428.959796060727
+            "x": 948.66779813069343,
+            "y": 564.04262218355666
           },
           "nodeIndex": "Fact Social Development",
           "size": {
-            "height": 104,
+            "height": 72,
             "width": 234
           },
-          "zIndex": 3
+          "zIndex": 3,
+          "expandedHeight": 104
         },
         {
           "location": {
-            "x": 0,
-            "y": 66.53149553599664
+            "x": 191.36733700734192,
+            "y": 633.128905106754
           },
           "nodeIndex": "Dim Age",
           "size": {
-            "height": 200,
+            "height": 72,
             "width": 234
           },
-          "zIndex": 4
+          "zIndex": 4,
+          "expandedHeight": 200
         },
         {
           "location": {
-            "x": 1028.4994389275244,
-            "y": -50
+            "x": 1112.9262052542929,
+            "y": 418.38153090820833
           },
           "nodeIndex": "Dim Economic Classification",
           "size": {
-            "height": 296,
+            "height": 72,
             "width": 234
           },
-          "zIndex": 5
+          "zIndex": 5,
+          "expandedHeight": 296
         },
         {
           "location": {
-            "x": 0,
-            "y": 546.52385381130182
+            "x": 248.49898557899252,
+            "y": 822.717124937097
           },
           "nodeIndex": "Dim Gender",
           "size": {
-            "height": 200,
+            "height": 72,
             "width": 234
           },
-          "zIndex": 6
+          "zIndex": 6,
+          "expandedHeight": 200
         },
         {
           "location": {
-            "x": 1010.0760613424881,
-            "y": 611.96753242779869
+            "x": 957.54385118361006,
+            "y": 199.21445260804154
           },
           "nodeIndex": "Dim Geography",
           "size": {
-            "height": 300,
+            "height": 72,
             "width": 234
           },
-          "zIndex": 7
+          "zIndex": 7,
+          "expandedHeight": 300
         },
         {
           "location": {
-            "x": 386.64776905417159,
-            "y": 538.96840306240165
+            "x": 354.75321288628123,
+            "y": 463.92238854971851
           },
           "nodeIndex": "Dim Indicator",
           "size": {
-            "height": 300,
+            "height": 72,
             "width": 234
           },
-          "zIndex": 8
+          "zIndex": 8,
+          "expandedHeight": 300
         },
         {
           "location": {
-            "x": 1289.7564731424141,
-            "y": 983.775615245311
+            "x": 1222.2150600809994,
+            "y": 662.95390320359081
           },
           "nodeIndex": "Dim Source",
           "size": {
-            "height": 300,
+            "height": 72,
             "width": 234
           },
-          "zIndex": 9
+          "zIndex": 9,
+          "expandedHeight": 300
         },
         {
           "location": {
-            "x": 50,
-            "y": 990.18385834703292
+            "x": 873.630009276697,
+            "y": 775.55226829187222
           },
           "nodeIndex": "Dim Time",
           "size": {
-            "height": 296,
+            "height": 72,
             "width": 234
           },
-          "zIndex": 10
+          "zIndex": 10,
+          "expandedHeight": 296
         },
         {
           "location": {
@@ -135,14 +145,15 @@
           },
           "nodeIndex": "Measures",
           "size": {
-            "height": 104,
+            "height": 72,
             "width": 234
           },
-          "zIndex": 11
+          "zIndex": 11,
+          "expandedHeight": 104
         }
       ],
       "name": "All tables",
-      "zoomValue": 53.300631965258894,
+      "zoomValue": 70,
       "pinKeyFieldsToTop": false,
       "showExtraHeaderInfo": false,
       "hideKeyFieldsWhenCollapsed": false,

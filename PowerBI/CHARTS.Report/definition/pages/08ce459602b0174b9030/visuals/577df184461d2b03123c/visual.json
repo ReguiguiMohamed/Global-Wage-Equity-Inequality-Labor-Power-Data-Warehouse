@@ -1446,6 +1446,20 @@
           ]
         },
         "howCreated": "User"
+      },
+      {
+        "name": "4d343110882c4eb7b64e",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Fact Inequality"
+              }
+            },
+            "Property": "Value - Fact Inequality"
+          }
+        },
+        "type": "Advanced"
       }
     ]
   }
